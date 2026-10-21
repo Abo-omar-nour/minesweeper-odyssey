@@ -1,0 +1,18 @@
+{
+  "name": "minesweeper-odyssey-mobile",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Minesweeper Odyssey — 100% Logical No-Guess Mobile & Desktop Edition",
+  "scripts": {
+    "start:frontend": "npx serve frontend -l 3000",
+    "start:backend": "cd backend && npm start",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync android",
+    "cap:open:android": "npx cap open android"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}

@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment & Secrets (NEVER commit secrets or signing keys)
+.env
+.env.local
+.env.production
+*.keystore
+*.jks
+
+# Native Android / iOS generated build folders
+android/app/build/
+android/.gradle/
+android/local.properties
+ios/
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

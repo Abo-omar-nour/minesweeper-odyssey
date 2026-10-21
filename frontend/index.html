@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Minesweeper Odyssey — Pro Graphics & No-Guess Edition</title>
+  <meta name="theme-color" content="#0c141c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="application-name" content="Minesweeper Odyssey" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-theme="retro">
+  <div class="app-shell" id="appShell">
+    <svg class="hidden" width="0" height="0"><defs><radialGradient id="fanousGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fffbeb"/><stop offset="55%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706" stop-opacity="0"/></radialGradient><linearGradient id="bgLeo"/><linearGradient id="skinLeo"/><linearGradient id="bgArthur"/><linearGradient id="bgElena"/><linearGradient id="bgVega"/><linearGradient id="bgVane"/><linearGradient id="sc1"/><linearGradient id="sc3"/><radialGradient id="sc8"/></defs></svg>
+    <!-- 1. LIVE 60FPS ANIMATED WORLD BACKGROUND CANVAS -->
+    <canvas id="themeBgCanvas"></canvas>
+
+    <!-- 2. SCENIC VECTOR HORIZON SILHOUETTE (Changes completely per theme!) -->
+    <div id="themeHorizonContainer"></div>
+
+    <!-- 3. GEOMETRIC TEXTURE OVERLAY -->
+    <div class="bg-pattern-overlay" id="bgPatternOverlay"></div>
+
+    <!-- 4. INTERACTIVE PARTICLE & SHOCKWAVE VFX CANVAS -->
+    <canvas id="vfxCanvas"></canvas>
+
+    <!-- Touch Hold Visual Indicator -->
+    <div id="touchHoldRing">
+      <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+        <circle cx="18" cy="18" r="15" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="3.5"></circle>
+        <circle id="touchHoldCircle" cx="18" cy="18" r="15" fill="none" stroke="var(--accent-primary)" stroke-width="3.5" stroke-dasharray="94.2" stroke-dashoffset="94.2" stroke-linecap="round"></circle>
+      </svg>
+    </div>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="themed-surface relative z-20 px-3 py-2.5 sm:px-5 flex items-center justify-between gap-2 shrink-0 border-t-0 border-x-0">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <button id="btnNavHome" class="w-10 h-10 rounded-xl themed-elevated flex items-center justify-center text-lg shrink-0 hover:scale-105 transition" title="Home">
+          <span id="brandIcon">🕹️</span>
+        </button>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5">
+            <h1 id="txtAppTitle" class="font-extrabold text-sm sm:text-base tracking-tight truncate">Minesweeper Odyssey</h1>
+            <span id="supporterCrown" class="hidden text-xs px-1.5 py-0.5 rounded-full font-bold" style="background: var(--accent-primary); color: var(--accent-Contrast);">👑 VIP</span>
+          </div>
+          <p id="txtAppSubtitle" class="text-[11px] truncate" style="color: var(--text-secondary);">100% Logical No-Guess Mobile Edition</p>
+        </div>
+      </div>
+
+      <!-- Quick Controls Right -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <!-- Hint Coins Counter -->
+        <button id="btnOpenSupportFromCoins" class="px-2.5 py-1.5 rounded-xl themed-card flex items-center gap-1.5 text-xs font-bold">
+          <span>💡</span>
+          <span id="txtCoinBalance">5</span>
+          <span class="text-[10px] px-1 rounded" style="background: var(--accent-primary); color: var(--accent-Contrast);">+</span>
+        </button>
+
+        <!-- Theme Quick Switcher -->
+        <button id="btnQuickTheme" class="w-9 h-9 rounded-xl themed-card flex items-center justify-center text-base" title="Switch Graphics World">
+          🎨
+        </button>
+
+        <!-- Language Quick Switcher -->
+        <button id="btnOpenLangModal" class="px-2.5 h-9 rounded-xl themed-card flex items-center gap-1 text-xs font-bold" title="Language">
+          <span>🌐</span>
+          <span id="txtCurrentLangCode">EN</span>
+        </button>
+
+        <!-- Cloud Sync & Backup Hub Button -->
+        <button id="btnOpenCloudSync" class="px-2.5 h-9 rounded-xl themed-card flex items-center gap-1 text-xs font-bold" title="Cloud & Offline Storage Sync">
+          <span id="cloudSyncTopIcon">☁️</span>
+          <span id="cloudSyncDot" class="w-2 h-2 rounded-full" style="background: #34d399; width: 7px; height: 7px; display: inline-block;"></span>
+        </button>
+
+        <!-- Settings Button -->
+        <button id="btnOpenSettings" class="w-9 h-9 rounded-xl themed-card flex items-center justify-center text-base" title="Settings">
+          ⚙️
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="relative z-10 flex-1 flex flex-col overflow-hidden">
+
+      <!-- ==================== VIEW 1: ULTRA-CLEAN MOBILE MAIN MENU ==================== -->
+      <section id="viewHome" class="flex-1 overflow-y-auto px-6 py-6 flex flex-col items-center justify-center">
+        <div class="w-full max-w-xs my-auto flex flex-col items-center text-center gap-6 animate-pop">
+
+          <!-- Minimalist Emblem & Title -->
+          <div class="flex flex-col items-center gap-2.5">
+            <div class="w-20 h-20 rounded-3xl themed-surface flex items-center justify-center p-3.5 shadow-2xl relative hover:scale-105 transition cursor-pointer" id="heroArtEmoji" title="Switch Graphics World"></div>
+            <h2 id="txtHeroHeading" class="text-2xl font-black tracking-tight leading-tight mt-1">Master the Art of Deduction</h2>
+            <span id="badgeNoGuessHome" class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-0.5 rounded-full opacity-90" style="background: var(--accent-primary); color: var(--accent-Contrast);">
+              🧠 100% Pure Logic • Zero Guessing
+            </span>
+            <p id="txtHeroDesc" class="hidden"></p>
+          </div>
+
+          <!-- Main Menu Buttons (Includes Auto-Saved Match Resume & Daily Challenge) -->
+          <div class="w-full flex flex-col gap-2.5">
+            <button id="btnResumeSavedGame" class="hidden themed-elevated w-full py-3 px-4 rounded-2xl text-sm font-extrabold items-center justify-between gap-2 shadow-lg" style="border-color: var(--accent-secondary); border-width: 2px;">
+              <span class="flex items-center gap-2 truncate">
+                <span>⚡</span>
+                <span id="txtBtnResumeGame" class="truncate">Resume Saved Match</span>
+              </span>
+              <span id="txtResumeMetaBadge" class="text-[11px] font-mono px-2 py-0.5 rounded-lg themed-input shrink-0">00:00</span>
+            </button>
+
+            <button id="btnOpenPlayModal" class="btn-primary w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 shadow-xl">
+              <span>▶️</span>
+              <span id="txtMainBtnPlay">Play Game</span>
+              <span id="txtMainBtnPlaySub" class="hidden"></span>
+            </button>
+
+            <button id="btnStartStoryMenu" class="themed-card w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-95 transition">
+              <span>📖</span>
+              <span id="txtBtnStoryMode">Story Mode</span>
+            </button>
+            <span class="hidden" id="txtStoryCtaLabel">Story & Beginner Tutorial</span>
+            <span class="hidden" id="txtStoryProgressSummary">Chapter 1: Interactive Beginner Guide</span>
+
+            <button id="btnOpenThemesStudio" class="themed-card w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-95 transition">
+              <span>🎨</span>
+              <span id="txtMainBtnThemes">Graphics Worlds</span>
+              <span class="hidden" id="txtActiveThemeName">Classic Arcade 95</span>
+              <span class="hidden">5 3D</span>
+            </button>
+
+            <button id="btnStartDailyChallenge" class="themed-card w-full py-3 px-4 rounded-2xl text-sm font-extrabold flex items-center justify-between gap-2 hover:scale-[1.02] active:scale-95 transition" style="border-color: var(--accent-primary);">
+              <span class="flex items-center gap-2">
+                <span>📅</span>
+                <span id="txtBtnDailyChallenge">Daily Logic Challenge</span>
+              </span>
+              <span id="badgeDailyStatus" class="text-[11px] font-mono px-2 py-0.5 rounded-full" style="background: var(--accent-primary); color: var(--accent-Contrast);">🔥 0</span>
+            </button>
+          </div>
+
+          <!-- Simple 3-Icon Bottom Row -->
+          <div class="w-full grid grid-cols-3 gap-2.5 pt-1">
+            <button id="btnHomeTutorial" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] transition">
+              <span class="text-lg">🎓</span>
+              <span class="text-[11px] font-bold" id="txtNavTutorial">How to Play</span>
+            </button>
+            <button id="btnHomeStats" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] transition">
+              <span class="text-lg">🏆</span>
+              <span class="text-[11px] font-bold" id="txtNavStats">Stats & Ranks</span>
+            </button>
+            <button id="btnHomeSupport" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center relative overflow-hidden hover:scale-[1.02] transition" style="border-color: var(--accent-primary);">
+              <span class="text-lg">💝</span>
+              <span class="text-[11px] font-bold" style="color: var(--accent-primary);" id="txtNavSupport">Support Us</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 2: 50-LEVEL CAMPAIGN & 5-STAGE ACADEMY MAP ==================== -->
+      <section id="viewStory" class="hidden flex-1 overflow-y-auto px-4 py-4 sm:px-6 flex-col items-center">
+        <div class="w-full max-w-md md:max-w-4xl flex flex-col gap-3.5 pb-6 animate-pop">
+          <div class="flex items-center justify-between gap-2">
+            <div>
+              <h2 id="txtStoryMapTitle" class="text-lg sm:text-xl font-extrabold">50-Level Logic Campaign & Academy</h2>
+              <p id="txtStoryMapSub" class="text-xs" style="color: var(--text-secondary);">Levels 1–5 teach you from scratch • Levels 6–50 scale from Beginner to Grandmaster</p>
+            </div>
+            <button id="btnBackFromStory" class="btn-secondary px-3 py-1.5 rounded-xl text-xs shrink-0">← <span id="txtStoryBack">Menu</span></button>
+          </div>
+
+          <!-- Campaign Overall Progress & Quick Continue Bar -->
+          <div class="themed-card p-3.5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div class="flex-1 w-full">
+              <div class="flex items-center justify-between text-xs font-extrabold mb-1.5">
+                <span id="txtCampaignProgressLabel">Campaign Progress: 0 / 50 Levels</span>
+                <span id="txtCampaignStarsLabel" style="color: var(--accent-primary);">⭐ 0 / 150</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full overflow-hidden themed-input">
+                <div id="campaignProgressBarFill" class="h-full transition-all duration-300" style="width: 0%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));"></div>
+              </div>
+            </div>
+            <button id="btnContinueCampaign" class="btn-primary px-4 py-2.5 rounded-xl text-xs font-extrabold shrink-0 w-full sm:w-auto">
+              ▶ <span id="txtBtnContinueCampaign">Start Level 1</span>
+            </button>
+          </div>
+
+          <!-- Tier / World Filter Tabs -->
+          <div id="storyFilterTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+          </div>
+
+          <div id="storyChaptersList" class="flex flex-col md:grid md:grid-cols-2 gap-3">
+            <!-- Populated dynamically by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VIEW 3: ACTIVE GAMEPLAY ==================== -->
+      <section id="viewGame" class="hidden flex-1 flex-col overflow-hidden">
+        <!-- Top Game HUD -->
+        <div class="px-3 py-2 themed-surface border-t-0 border-x-0 flex items-center justify-between gap-2 shrink-0">
+          <button id="btnGameBack" class="btn-secondary px-2.5 py-1.5 rounded-xl text-xs flex items-center gap-1">
+            <span>←</span>
+            <span id="txtGameMenuBtn">Menu</span>
+          </button>
+
+          <!-- Mines Remaining, Face Reset, Timer -->
+          <div class="flex items-center gap-2 sm:gap-3">
+            <div class="themed-input px-2.5 py-1 rounded-xl flex items-center gap-1.5 font-mono text-xs sm:text-sm font-bold">
+              <span id="hudFlagIconWrap" class="w-4 h-4 inline-flex items-center justify-center">🚩</span>
+              <span id="hudMinesLeft">010</span>
+            </div>
+
+            <button id="btnResetBoard" class="w-9 h-9 rounded-xl themed-elevated flex items-center justify-center text-lg hover:scale-105 active:scale-95 transition" title="Restart">
+              <span id="hudFaceEmoji">😎</span>
+            </button>
+
+            <div class="themed-input px-2.5 py-1 rounded-xl flex items-center gap-1.5 font-mono text-xs sm:text-sm font-bold">
+              <span>⏱️</span>
+              <span id="hudTimer">000</span>
+            </div>
+          </div>
+
+          <!-- No-Guess Badge & Logical Hint Button -->
+          <div class="flex items-center gap-1.5">
+            <button id="btnLogicalHint" class="btn-primary px-2.5 py-1.5 rounded-xl text-xs flex items-center gap-1" title="Smart Logical Hint">
+              <span>💡</span>
+              <span id="txtHintBtn" class="hidden sm:inline">Logic Hint</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Story / Tutorial Banner -->
+        <div id="storyHudBanner" class="hidden px-3.5 py-2.5 themed-card border-x-0 border-t-0 rounded-none shrink-0">
+          <div class="max-w-lg mx-auto flex items-start justify-between gap-3">
+            <div class="flex items-start gap-2.5">
+              <span id="storyBannerEmoji" class="text-2xl shrink-0 mt-0.5">🧞‍♂️</span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="storyBannerTitle" class="text-xs font-extrabold uppercase tracking-wider" style="color: var(--accent-primary);">Tutorial Step 1/4</span>
+                </div>
+                <p id="storyBannerText" class="text-xs sm:text-sm font-medium mt-0.5 leading-snug"></p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0 self-center">
+              <button id="btnReplayStoryCutscene" class="btn-secondary px-2.5 py-1.5 rounded-xl text-xs font-bold" title="Mission Briefing">
+                📖 <span id="txtReplayStoryBtn">القصة</span>
+              </button>
+              <button id="btnNextTutorialStep" class="hidden btn-primary px-3 py-1.5 rounded-xl text-xs">
+                Next →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logical Hint Explanation Toast -->
+        <div id="logicHintBanner" class="hidden px-3.5 py-2 themed-elevated border-x-0 border-t-0 shrink-0">
+          <div class="max-w-lg mx-auto flex items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span>🧠</span>
+              <span id="logicHintText" class="font-medium"></span>
+            </div>
+            <button id="btnCloseHintBanner" class="opacity-75 hover:opacity-100 font-bold px-1.5">✕</button>
+          </div>
+        </div>
+
+        <!-- Interactive Scrollable / Zoomable Board Area -->
+        <div class="board-viewport" id="boardViewport">
+          <div id="minesweeperGrid" class="board-grid"></div>
+        </div>
+
+        <!-- Bottom Mobile Action Bar -->
+        <div class="themed-surface px-3 py-2.5 sm:px-5 border-b-0 border-x-0 shrink-0 flex items-center justify-between gap-2">
+          <!-- Mode Toggle: DIG vs FLAG -->
+          <div class="flex items-center p-1 rounded-2xl themed-input gap-1">
+            <button id="btnModeDig" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition">
+              <span>⛏️</span>
+              <span id="txtModeDig">Dig</span>
+            </button>
+            <button id="btnModeFlag" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 transition">
+              <span id="bottomFlagIcon" class="w-4 h-4 inline-flex items-center justify-center">🚩</span>
+              <span id="txtModeFlag">Flag</span>
+            </button>
+          </div>
+
+          <!-- Logic Mode Indicator -->
+          <div class="hidden sm:flex items-center gap-1.5 text-[11px] font-semibold px-2.5 py-1 rounded-full themed-card">
+            <span id="statusNoGuessIcon">🧠</span>
+            <span id="statusNoGuessText">Pure Logic Active</span>
+          </div>
+
+          <!-- Cell Size / Zoom & Pan Reset Control -->
+          <div class="flex items-center gap-1.5">
+            <button id="btnCenterBoard" class="hidden w-8 h-8 rounded-xl themed-card items-center justify-center font-bold text-xs" title="Center Board (توسيط اللوحة)">🎯</button>
+            <button id="btnZoomOut" class="w-8 h-8 rounded-xl themed-card flex items-center justify-center font-bold text-sm" title="Zoom Out">−</button>
+            <span id="txtZoomLevel" class="text-[11px] font-mono font-bold w-10 text-center cursor-pointer" title="Reset Zoom & Center">100%</span>
+            <button id="btnZoomIn" class="w-8 h-8 rounded-xl themed-card flex items-center justify-center font-bold text-sm" title="Zoom In">+</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==================== MODAL 0A: PLAY / DIFFICULTY SELECTOR ==================== -->
+    <div id="modalPlaySelect" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <h3 id="txtSelectDifficulty" class="font-extrabold text-base sm:text-lg flex items-center gap-2">
+            <span>🎯</span> <span id="txtQuickPlayHeading">Quick Play (No-Guess)</span>
+          </h3>
+          <button id="btnClosePlayModal" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <div class="flex items-center justify-between themed-card px-3 py-2 rounded-xl">
+          <span class="text-xs font-medium" style="color: var(--text-secondary);" id="txtPlayModalLogicHint">Every board is verified solvable by pure logic</span>
+          <label class="flex items-center gap-1.5 text-xs cursor-pointer shrink-0">
+            <input type="checkbox" id="chkNoGuessHome" checked class="accent-amber-500 w-4 h-4 rounded" />
+            <span id="txtNoGuessToggleLabel" class="font-bold" style="color: var(--accent-primary);">No-Guess Logic</span>
+          </label>
+        </div>
+
+        <!-- Difficulty Grid -->
+        <div class="grid grid-cols-2 gap-2.5" id="difficultyCardsContainer">
+          <button data-diff="beginner" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffBeginner">Beginner</span>
+              <span class="text-lg">🌱</span>
+            </div>
+            <div id="diffDim_beginner" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">9 × 9 • 10 💣</div>
+          </button>
+
+          <button data-diff="intermediate" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffIntermediate">Intermediate</span>
+              <span class="text-lg">⚡</span>
+            </div>
+            <div id="diffDim_intermediate" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">10 × 14 • 22 💣</div>
+          </button>
+
+          <button data-diff="expert" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffExpert">Expert</span>
+              <span class="text-lg">🔥</span>
+            </div>
+            <div id="diffDim_expert" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">12 × 18 • 40 💣</div>
+          </button>
+
+          <button data-diff="master" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffMaster">Master</span>
+              <span class="text-lg">👑</span>
+            </div>
+            <div id="diffDim_master" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">14 × 20 • 60 💣</div>
+          </button>
+
+          <button data-diff="grandmaster" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffGrandmaster">Grandmaster</span>
+              <span class="text-lg">🛡️</span>
+            </div>
+            <div id="diffDim_grandmaster" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">24 × 16 • 99 💣</div>
+          </button>
+
+          <button data-diff="legend" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" id="txtDiffLegend">Legend</span>
+              <span class="text-lg">🐉</span>
+            </div>
+            <div id="diffDim_legend" class="text-xs mt-1.5 font-mono" style="color: var(--text-secondary);">30 × 20 • 160 💣</div>
+          </button>
+
+          <button data-diff="nightmare" class="diff-btn themed-elevated rounded-xl p-3.5 text-start hover:scale-[1.02] transition flex flex-col justify-between col-span-2" style="border-color: var(--accent-primary); border-width: 1.5px;">
+            <div class="flex items-center justify-between w-full">
+              <span class="font-extrabold text-sm" style="color: var(--accent-primary);" id="txtDiffNightmare">Extreme Pro 250</span>
+              <span class="text-lg">💀🔥</span>
+            </div>
+            <div id="diffDim_nightmare" class="text-xs mt-1.5 font-mono font-bold" style="color: var(--text-primary);">36 × 26 • 250 💣</div>
+          </button>
+        </div>
+
+        <!-- Custom Board Accordion -->
+        <div class="pt-2 border-t flex flex-col gap-2" style="border-color: var(--border-color);">
+          <button id="btnToggleCustomDiff" class="w-full flex items-center justify-between text-xs font-bold py-1" style="color: var(--text-secondary);">
+            <span id="txtCustomBoardTitle">🛠️ Custom Board Dimensions</span>
+            <span id="customAccordionArrow">▼</span>
+          </button>
+          <div id="customDiffPanel" class="hidden flex-col gap-2.5 pt-1">
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <div class="themed-input p-2 rounded-lg">
+                <label class="block text-[10px]" style="color: var(--text-secondary);" id="txtCustomCols">Cols (Width)</label>
+                <input id="inpCustomCols" type="number" min="5" max="40" value="14" class="w-full bg-transparent font-mono font-bold text-sm focus:outline-none mt-0.5" />
+              </div>
+              <div class="themed-input p-2 rounded-lg">
+                <label class="block text-[10px]" style="color: var(--text-secondary);" id="txtCustomRows">Rows (Height)</label>
+                <input id="inpCustomRows" type="number" min="5" max="36" value="10" class="w-full bg-transparent font-mono font-bold text-sm focus:outline-none mt-0.5" />
+              </div>
+              <div class="themed-input p-2 rounded-lg">
+                <label class="block text-[10px]" style="color: var(--text-secondary);" id="txtCustomMines">Mines</label>
+                <input id="inpCustomMines" type="number" min="3" max="250" value="35" class="w-full bg-transparent font-mono font-bold text-sm focus:outline-none mt-0.5" />
+              </div>
+            </div>
+            <button id="btnStartCustom" class="btn-primary w-full py-2.5 rounded-xl text-xs">
+              <span id="txtBtnPlayCustom">Launch Custom Board</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 0B: PRO GRAPHICS WORLDS STUDIO ==================== -->
+    <div id="modalThemesStudio" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <h3 class="font-extrabold text-base flex items-center gap-2">
+            <span>✨</span> <span id="txtHomeThemesTitle">5 Pro Graphics Worlds (Live 3D & VFX)</span>
+          </h3>
+          <button id="btnCloseThemesStudio" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <div id="liveThemeShowcaseBar" class="themed-input rounded-xl p-3 flex items-center justify-between gap-2.5 text-xs"></div>
+
+        <div class="grid grid-cols-3 gap-2" id="homeThemeSwatches"></div>
+
+        <div id="studioThemesDetailedList" class="flex flex-col gap-2 pt-1"></div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 1: SETTINGS & CONTROLS CUSTOMIZATION ==================== -->
+    <div id="modalSettings" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-4 animate-pop">
+        <div class="flex items-center justify-between border-b pb-3" style="border-color: var(--border-color);">
+          <h3 class="font-extrabold text-base sm:text-lg flex items-center gap-2">
+            <span>⚙️</span> <span id="txtSettingsTitle">Settings & Custom Controls</span>
+          </h3>
+          <button id="btnCloseSettings" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <!-- Theme Selector inside Settings (With Live Sprite Previews) -->
+        <div class="flex flex-col gap-2">
+          <label class="text-xs font-bold uppercase tracking-wider" style="color: var(--accent-primary);" id="txtSettingThemeLabel">Pro Graphics World (Changes 3D Tiles, Sprites, VFX & Scenery)</label>
+          <div id="settingsThemeList" class="grid grid-cols-1 gap-2"></div>
+        </div>
+
+        <!-- Touch & Mouse Control Customization -->
+        <div class="flex flex-col gap-2.5 pt-2 border-t" style="border-color: var(--border-color);">
+          <label class="text-xs font-bold uppercase tracking-wider" style="color: var(--accent-primary);" id="txtSettingControlsHeader">Touch & Mouse Controls</label>
+
+          <!-- Default Primary Tap Action -->
+          <div class="flex items-center justify-between gap-2 themed-card p-2.5 rounded-xl">
+            <div>
+              <div class="text-xs font-bold" id="txtSetPrimaryTap">Default Tap / Click Action</div>
+              <div class="text-[11px]" style="color: var(--text-secondary);" id="txtSetPrimaryTapSub">Action when tapping a cell normally</div>
+            </div>
+            <select id="selDefaultTapMode" class="themed-input text-xs font-bold px-2.5 py-1.5 rounded-lg focus:outline-none">
+              <option value="dig" id="optTapDig">⛏️ Dig (Reveal)</option>
+              <option value="flag" id="optTapFlag">🚩 Place Flag</option>
+            </select>
+          </div>
+
+          <!-- Long Press Duration Slider -->
+          <div class="flex flex-col gap-1.5 themed-card p-2.5 rounded-xl">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold" id="txtSetLongPress">Touch Long-Press Delay (Opposite Action)</span>
+              <span id="valLongPressMs" class="text-xs font-mono font-bold" style="color: var(--accent-primary);">280ms</span>
+            </div>
+            <input id="rngLongPress" type="range" min="160" max="600" step="20" value="280" class="w-full accent-amber-500 cursor-pointer" />
+          </div>
+
+          <!-- Number Chording Option -->
+          <div class="flex items-center justify-between gap-2 themed-card p-2.5 rounded-xl">
+            <div>
+              <div class="text-xs font-bold" id="txtSetChordLabel">Chord on Number Tap (Quick Reveal)</div>
+              <div class="text-[11px]" style="color: var(--text-secondary);" id="txtSetChordSub">Tap a satisfied number to open safe neighbors</div>
+            </div>
+            <input id="chkChordEnabled" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer" />
+          </div>
+
+          <!-- Guaranteed No-Guess Solver Toggle -->
+          <div class="flex items-center justify-between gap-2 themed-card p-2.5 rounded-xl">
+            <div>
+              <div class="text-xs font-bold" id="txtSetNoGuessLabel">100% Logical No-Guess Generator</div>
+              <div class="text-[11px]" style="color: var(--text-secondary);" id="txtSetNoGuessSub">Guarantees every board is solvable by pure logic</div>
+            </div>
+            <input id="chkNoGuessSettings" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded cursor-pointer" />
+          </div>
+
+          <!-- Audio & Haptics -->
+          <div class="grid grid-cols-2 gap-2">
+            <label class="themed-card p-2.5 rounded-xl flex items-center justify-between cursor-pointer">
+              <span class="text-xs font-bold" id="txtSetSound">🔊 Sound FX</span>
+              <input id="chkSound" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded" />
+            </label>
+            <label class="themed-card p-2.5 rounded-xl flex items-center justify-between cursor-pointer">
+              <span class="text-xs font-bold" id="txtSetHaptics">📳 Haptics</span>
+              <input id="chkHaptics" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded" />
+            </label>
+          </div>
+        </div>
+
+        <button id="btnSaveSettings" class="btn-primary w-full py-2.5 rounded-xl text-xs sm:text-sm">
+          <span id="txtBtnDoneSettings">Save & Return</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 2: 9 LANGUAGES SELECTOR ==================== -->
+    <div id="modalLanguages" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <h3 class="font-extrabold text-base flex items-center gap-2">
+            <span>🌐</span> <span id="txtLangModalTitle">Select Language (9 Core Languages)</span>
+          </h3>
+          <button id="btnCloseLangModal" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+        <div id="langGridContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-2"></div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 3: SUPPORT US / CREATOR SUPPORT & STORE HUB ==================== -->
+    <div id="modalSupport" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <div>
+            <h3 class="font-extrabold text-base sm:text-lg flex items-center gap-2">
+              <span>💝</span> <span id="txtSupportTitle">Support the Developers</span>
+            </h3>
+            <p id="txtSupportSubtitle" class="text-xs" style="color: var(--text-secondary);">Help us keep the game 100% fair, logical & growing!</p>
+          </div>
+          <button id="btnCloseSupport" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <div id="supportThankYouBanner" class="hidden p-3 rounded-xl text-xs font-bold text-center" style="background: var(--accent-primary); color: var(--accent-Contrast);">
+          🎉 Thank you for supporting Minesweeper Odyssey! VIP Crown & Bonus Hints Activated!
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <div class="themed-card p-3 rounded-xl flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">☕</span>
+              <div>
+                <div class="font-bold text-xs sm:text-sm" id="txtTier1Title">Arabic Coffee Tip</div>
+                <div class="text-[11px]" style="color: var(--text-secondary);" id="txtTier1Desc">+10 Logic Hints & Supporter Heart</div>
+              </div>
+            </div>
+            <button data-tier="coffee" data-coins="10" class="support-tier-btn btn-primary px-3 py-1.5 rounded-xl text-xs shrink-0">$1.99</button>
+          </div>
+
+          <div class="themed-card p-3 rounded-xl flex items-center justify-between gap-3" style="border-color: var(--accent-primary);">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">🌟</span>
+              <div>
+                <div class="font-bold text-xs sm:text-sm" id="txtTier2Title">Oasis Patron Pack</div>
+                <div class="text-[11px]" style="color: var(--text-secondary);" id="txtTier2Desc">VIP Crown Badge + 30 Logic Hints + Ad-Free</div>
+              </div>
+            </div>
+            <button data-tier="patron" data-coins="30" class="support-tier-btn btn-primary px-3 py-1.5 rounded-xl text-xs shrink-0">$4.99</button>
+          </div>
+
+          <div class="themed-card p-3 rounded-xl flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="text-2xl">👑</span>
+              <div>
+                <div class="font-bold text-xs sm:text-sm" id="txtTier3Title">Royal Sapper Founder</div>
+                <div class="text-[11px]" style="color: var(--text-secondary);" id="txtTier3Desc">100 Logic Hints + VIP Crown + All Future Packs</div>
+              </div>
+            </div>
+            <button data-tier="founder" data-coins="100" class="support-tier-btn btn-primary px-3 py-1.5 rounded-xl text-xs shrink-0">$9.99</button>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t flex flex-col gap-2" style="border-color: var(--border-color);">
+          <div class="text-xs font-bold uppercase tracking-wider" style="color: var(--accent-primary);" id="txtFreeSupportHeader">Free Ways to Support Us</div>
+          <div class="grid grid-cols-3 gap-2">
+            <button id="btnSupportWatchAd" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
+              <span class="text-lg">🎬</span>
+              <span id="txtBtnBonusHint">Free +3 Hints</span>
+            </button>
+            <button id="btnSupportRate" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
+              <span class="text-lg">⭐</span>
+              <span id="txtBtnRateApp">Rate 5 Stars</span>
+            </button>
+            <button id="btnSupportShare" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
+              <span class="text-lg">📤</span>
+              <span id="txtBtnShareApp">Share Game</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 4: STATS & HALL OF RECORDS ==================== -->
+    <div id="modalStats" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <h3 class="font-extrabold text-base flex items-center gap-2">
+            <span>🏆</span> <span id="txtStatsModalTitle">Player Statistics & Records</span>
+          </h3>
+          <button id="btnCloseStats" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="themed-card p-3 rounded-xl">
+            <div class="text-xl font-extrabold font-mono" style="color: var(--accent-primary);" id="statGamesWon">0</div>
+            <div class="text-[11px] mt-0.5" style="color: var(--text-secondary);" id="txtStatWins">Victories</div>
+          </div>
+          <div class="themed-card p-3 rounded-xl">
+            <div class="text-xl font-extrabold font-mono" style="color: var(--accent-primary);" id="statWinRate">0%</div>
+            <div class="text-[11px] mt-0.5" style="color: var(--text-secondary);" id="txtStatWinRate">Win Rate</div>
+          </div>
+          <div class="themed-card p-3 rounded-xl">
+            <div class="text-xl font-extrabold font-mono" style="color: var(--accent-primary);" id="statStoryStars">0 / 18</div>
+            <div class="text-[11px] mt-0.5" style="color: var(--text-secondary);" id="txtStatStars">Story Stars</div>
+          </div>
+        </div>
+
+        <div class="themed-card p-3 rounded-xl flex flex-col gap-2 text-xs">
+          <div class="font-bold" style="color: var(--accent-primary);" id="txtBestTimesHeader">⏱️ Best Logical Clear Times</div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestBeg">Beginner (9×9)</span>
+            <span class="font-mono font-bold" id="valBestBeginner">--</span>
+          </div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestInt">Intermediate (10×14)</span>
+            <span class="font-mono font-bold" id="valBestIntermediate">--</span>
+          </div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestExp">Expert (12×18)</span>
+            <span class="font-mono font-bold" id="valBestExpert">--</span>
+          </div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestMas">Master (14×20)</span>
+            <span class="font-mono font-bold" id="valBestMaster">--</span>
+          </div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestGm">Grandmaster (24×16)</span>
+            <span class="font-mono font-bold" id="valBestGrandmaster">--</span>
+          </div>
+          <div class="flex justify-between py-1 border-b" style="border-color: var(--border-color);">
+            <span id="txtBestLeg">Legend (30×20)</span>
+            <span class="font-mono font-bold" id="valBestLegend">--</span>
+          </div>
+          <div class="flex justify-between py-1">
+            <span id="txtBestNm">Extreme Pro 250 (36×26)</span>
+            <span class="font-mono font-bold" id="valBestNightmare">--</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 5: VICTORY / GAME OVER OVERLAY ==================== -->
+    <div id="modalGameResult" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-sm rounded-2xl p-5 text-center flex flex-col items-center gap-3.5 animate-pop">
+        <div id="resultEmoji" class="text-5xl">🏆</div>
+        <h3 id="resultTitle" class="text-xl font-extrabold">Victory!</h3>
+        <p id="resultSubtitle" class="text-xs sm:text-sm" style="color: var(--text-secondary);">Board cleared with pure logical deduction.</p>
+
+        <div class="w-full grid grid-cols-2 gap-2.5 my-1">
+          <div class="themed-card p-2.5 rounded-xl">
+            <div class="text-[11px]" style="color: var(--text-secondary);" id="txtResTime">Time</div>
+            <div id="resultTimeVal" class="text-base font-mono font-extrabold mt-0.5">024s</div>
+          </div>
+          <div class="themed-card p-2.5 rounded-xl">
+            <div class="text-[11px]" style="color: var(--text-secondary);" id="txtResMode">Logic Status</div>
+            <div id="resultLogicVal" class="text-xs font-extrabold mt-1" style="color: var(--accent-primary);">100% No-Guess</div>
+          </div>
+        </div>
+
+        <button id="btnSecondChanceDefuse" class="hidden w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold items-center justify-center gap-2 shadow-lg" style="background: linear-gradient(135deg, #10b981, #059669); color: #ffffff;">
+          <span>🛡️</span>
+          <span id="txtBtnDefuseMine">Defuse Mine & Continue (2 💡)</span>
+        </button>
+
+        <div class="w-full flex flex-col sm:flex-row gap-2 mt-1">
+          <button id="btnResultPlayAgain" class="btn-primary flex-1 py-2.5 rounded-xl text-xs sm:text-sm">
+            🔄 <span id="txtBtnPlayAgain">Play Again</span>
+          </button>
+          <button id="btnResultNextStory" class="hidden btn-primary flex-1 py-2.5 rounded-xl text-xs sm:text-sm">
+            ⏭️ <span id="txtBtnNextChapter">Next Chapter</span>
+          </button>
+          <button id="btnResultMenu" class="btn-secondary flex-1 py-2.5 rounded-xl text-xs sm:text-sm">
+            🏠 <span id="txtBtnResultHome">Menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 6: ILLUSTRATED STORY CUTSCENE ==================== -->
+    <div id="modalStoryCutscene" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-lg rounded-3xl overflow-hidden flex flex-col max-h-[92vh] animate-pop border-2" style="border-color: var(--accent-primary);">
+        <!-- Illustrated Scene Artwork Header -->
+        <div id="cutsceneArtContainer" class="w-full h-44 sm:h-52 relative overflow-hidden shrink-0 border-b" style="border-color: var(--border-color); background: #071018;">
+        </div>
+
+        <!-- Story Chapter Badge & Title -->
+        <div class="p-4 sm:p-5 overflow-y-auto flex flex-col gap-3">
+          <div class="flex items-center justify-between gap-2">
+            <span id="cutsceneBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full" style="background: var(--accent-primary); color: var(--accent-Contrast);">الفصل 1</span>
+            <span id="cutsceneDimsBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded themed-input">8×6 • 5 💣</span>
+          </div>
+
+          <h3 id="cutsceneTitle" class="text-lg sm:text-xl font-black tracking-tight leading-snug">ورشة الجد نوح</h3>
+
+          <!-- Character Dialogue Cards -->
+          <div id="cutsceneDialogueList" class="flex flex-col gap-2.5"></div>
+
+          <!-- Tactical Logic Lesson Box -->
+          <div id="cutsceneLessonBox" class="themed-input rounded-xl p-3 border-s-4 text-xs leading-relaxed" style="border-left-color: var(--accent-primary); border-right-color: var(--accent-primary);">
+          </div>
+
+          <div class="flex items-center gap-2 pt-2">
+            <button id="btnStartStoryMissionNow" class="btn-primary flex-1 py-3 rounded-xl text-sm font-extrabold flex items-center justify-center gap-2 shadow-lg">
+              <span>⚔️</span>
+              <span id="txtBtnStartMissionNow">ابدأ المهمة الآن</span>
+            </button>
+            <button id="btnCloseCutsceneModal" class="btn-secondary px-4 py-3 rounded-xl text-xs font-bold">
+              <span id="txtBtnCancelCutscene">رجوع</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL 7: HYBRID CLOUD + LOCAL STORAGE & APK CENTER ==================== -->
+    <div id="modalCloudSync" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+      <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
+        <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
+          <div>
+            <h3 class="font-extrabold text-base flex items-center gap-2">
+              <span>☁️</span> <span id="txtCloudModalTitle">Cloud & Offline Storage Hub</span>
+            </h3>
+            <p id="txtCloudModalSub" class="text-[11px]" style="color: var(--text-secondary);">Works 100% Offline (Local + IndexedDB) & Syncs Automatically When Online</p>
+          </div>
+          <button id="btnCloseCloudSync" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
+        </div>
+
+        <!-- Account Login & Google Play / Email Auto-Sync Card -->
+        <div class="themed-card p-3.5 rounded-xl flex flex-col gap-2.5 text-xs" style="border-color: var(--accent-primary); border-width: 1.5px;">
+          <div class="flex items-center justify-between">
+            <span class="font-extrabold text-sm flex items-center gap-1.5" style="color: var(--accent-primary);">
+              <span>👤</span>
+              <span id="txtAccountAuthHeader">ربط الحساب والمزامنة التلقائية</span>
+            </span>
+            <span id="badgeAccountAuthState" class="px-2 py-0.5 rounded-full text-[10px] font-extrabold themed-input">غير مربوط (حفظ محلي)</span>
+          </div>
+          <p id="txtAccountAuthDesc" class="text-[11px] leading-snug" style="color: var(--text-secondary);">
+            اربط اللعبة بحساب ألعاب Google Play أو بريدك الإلكتروني لمزامنة نجوم الـ 50 مرحلة، الأرقام القياسية، والعملات تلقائياً فور فتح اللعبة من أي جهاز.
+          </p>
+
+          <!-- Logged-Out View: Google Play Games + Email Login -->
+          <div id="accountLoggedOutBox" class="flex flex-col gap-2 pt-1">
+            <button id="btnLoginGooglePlay" class="btn-primary w-full py-2.5 px-3 rounded-xl text-xs font-extrabold flex items-center justify-center gap-2 shadow-lg">
+              <span>🎮</span>
+              <span id="txtBtnGooglePlayLogin">تسجيل الدخول عبر Google Play Games</span>
+            </button>
+            <div class="flex items-center gap-1.5">
+              <input id="inpAccountEmail" type="email" placeholder="example@gmail.com" class="themed-input flex-1 px-2.5 py-2 rounded-xl text-xs font-mono focus:outline-none" />
+              <button id="btnLoginEmailAccount" class="btn-secondary px-3 py-2 rounded-xl text-xs font-extrabold shrink-0">
+                ✉️ <span id="txtBtnEmailLogin">ربط الإيميل</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Logged-In View: Active Profile & Auto-Sync Toggle -->
+          <div id="accountLoggedInBox" class="hidden flex-col gap-2 pt-1">
+            <div class="themed-input p-2.5 rounded-xl flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span id="accountProviderIcon" class="text-lg">🎮</span>
+                <div class="min-w-0">
+                  <div id="valAccountDisplayName" class="font-extrabold text-xs truncate">Google Play Gamer</div>
+                  <div id="valAccountEmail" class="text-[10px] font-mono truncate" style="color: var(--text-secondary);">player@gmail.com</div>
+                </div>
+              </div>
+              <button id="btnLogoutAccount" class="btn-secondary px-2.5 py-1 rounded-lg text-[10px] font-bold shrink-0">
+                <span id="txtBtnLogoutAccount">خروج</span>
+              </button>
+            </div>
+            <label class="flex items-center justify-between px-1 pt-0.5 cursor-pointer">
+              <span id="txtAutoSyncToggleLabel" class="text-[11px] font-bold" style="color: var(--accent-primary);">🔄 مزامنة سحابية تلقائية بعد كل فوز</span>
+              <input id="chkAutoSyncEnabled" type="checkbox" checked class="w-4 h-4 accent-amber-500 rounded" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Live Storage Engine Status Card -->
+        <div class="themed-card p-3 rounded-xl flex flex-col gap-2 text-xs">
+          <div class="flex items-center justify-between">
+            <span class="font-bold" id="txtStorageStatusLabel">Storage Status:</span>
+            <span id="badgeStorageStatus" class="px-2 py-0.5 rounded-full text-[11px] font-extrabold" style="background: #10b981; color: #041a14;">⚡ Local + IndexedDB Active</span>
+          </div>
+          <div class="flex items-center justify-between" style="color: var(--text-secondary);">
+            <span id="txtPlayerCloudIdLabel">Player Sync ID:</span>
+            <span id="valPlayerCloudId" class="font-mono font-bold" style="color: var(--accent-primary);">MS-0000</span>
+          </div>
+          <div class="flex items-center justify-between" style="color: var(--text-secondary);">
+            <span id="txtLastSyncedLabel">Last Local/Cloud Save:</span>
+            <span id="valLastSyncedTime" class="font-mono font-bold">Just now</span>
+          </div>
+        </div>
+
+        <!-- Option A: Instant Transfer Code (Zero-Server Free Cross-Device Backup) -->
+        <div class="themed-card p-3 rounded-xl flex flex-col gap-2 text-xs">
+          <div class="font-extrabold" style="color: var(--accent-primary);" id="txtBackupCodeHeader">🔑 Instant Cross-Device Transfer Code (Free)</div>
+          <p id="txtBackupCodeDesc" class="text-[11px] leading-snug" style="color: var(--text-secondary);">Copy your encrypted progress code or paste a code from another phone/PC to merge your highest stars, best times & coins.</p>
+          <div class="flex items-center gap-2">
+            <button id="btnExportSaveCode" class="btn-primary flex-1 py-2 rounded-xl text-xs">📤 <span id="txtBtnCopyCode">Copy Save Code</span></button>
+            <button id="btnDownloadSaveFile" class="btn-secondary px-3 py-2 rounded-xl text-xs">💾 <span id="txtBtnDownloadJson">JSON</span></button>
+          </div>
+          <div class="flex items-center gap-1.5 pt-1">
+            <input id="inpImportSaveCode" type="text" placeholder="Paste Save Code (MSODY1:...) here" class="themed-input flex-1 px-2.5 py-2 rounded-xl text-xs font-mono focus:outline-none" />
+            <button id="btnImportSaveCode" class="btn-secondary px-3 py-2 rounded-xl text-xs font-extrabold">📥 <span id="txtBtnRestoreCode">Merge</span></button>
+          </div>
+        </div>
+
+        <!-- Option B: Free Cloud Database Sync (Firebase / Supabase / Custom REST URL) -->
+        <div class="themed-card p-3 rounded-xl flex flex-col gap-2 text-xs">
+          <div class="font-extrabold" style="color: var(--accent-primary);" id="txtCloudEndpointHeader">🌐 Auto Cloud Sync (Firebase / Supabase Free Tier)</div>
+          <p id="txtCloudEndpointDesc" class="text-[11px] leading-snug" style="color: var(--text-secondary);">Optional: Enter a free Firebase Realtime DB URL (e.g. https://your-project-default-rtdb.firebaseio.com) to auto-sync your progress in the background whenever internet is available.</p>
+          <input id="inpCloudSyncUrl" type="url" placeholder="https://your-app-default-rtdb.firebaseio.com" class="themed-input w-full px-2.5 py-2 rounded-xl text-xs font-mono focus:outline-none" />
+          <div class="flex items-center gap-2">
+            <button id="btnTriggerCloudSyncNow" class="btn-primary flex-1 py-2 rounded-xl text-xs">🔄 <span id="txtBtnSyncNow">Save & Sync Cloud Now</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="appToast" class="fixed bottom-16 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2 rounded-full text-xs font-bold shadow-lg" style="background: var(--accent-primary); color: var(--accent-Contrast);">
+      Notification
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
