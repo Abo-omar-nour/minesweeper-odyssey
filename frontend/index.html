@@ -35,48 +35,48 @@
     </div>
 
     <!-- TOP NAVIGATION BAR -->
-    <header class="themed-surface relative z-20 px-3 py-2.5 sm:px-5 flex items-center justify-between gap-2 shrink-0 border-t-0 border-x-0">
-      <div class="flex items-center gap-2.5 min-w-0">
-        <button id="btnNavHome" class="w-10 h-10 rounded-xl themed-elevated flex items-center justify-center text-lg shrink-0 hover:scale-105 transition" title="Home">
+    <header class="themed-surface relative z-20 px-2.5 py-2 sm:px-5 flex items-center justify-between gap-1.5 sm:gap-2 shrink-0 border-t-0 border-x-0">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
+        <button id="btnNavHome" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl themed-elevated flex items-center justify-center text-lg shrink-0 hover:scale-105 active:scale-95 transition" title="Home">
           <span id="brandIcon">🕹️</span>
         </button>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5">
-            <h1 id="txtAppTitle" class="font-extrabold text-sm sm:text-base tracking-tight truncate">Minesweeper Odyssey</h1>
-            <span id="supporterCrown" class="hidden text-xs px-1.5 py-0.5 rounded-full font-bold" style="background: var(--accent-primary); color: var(--accent-Contrast);">👑 VIP</span>
+            <h1 id="txtAppTitle" class="font-black text-xs sm:text-base tracking-tight truncate">ملحمة كانسة الألغام</h1>
+            <span id="supporterCrown" class="hidden text-[10px] sm:text-xs px-1.5 py-0.5 rounded-full font-bold" style="background: var(--accent-primary); color: var(--accent-Contrast);">👑 VIP</span>
           </div>
-          <p id="txtAppSubtitle" class="text-[11px] truncate" style="color: var(--text-secondary);">100% Logical No-Guess Mobile Edition</p>
+          <p id="txtAppSubtitle" class="hidden sm:block text-[11px] truncate" style="color: var(--text-secondary);">100% Logical No-Guess Mobile Edition</p>
         </div>
       </div>
 
       <!-- Quick Controls Right -->
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
         <!-- Hint Coins Counter -->
-        <button id="btnOpenSupportFromCoins" class="px-2.5 py-1.5 rounded-xl themed-card flex items-center gap-1.5 text-xs font-bold">
+        <button id="btnOpenSupportFromCoins" class="px-2 py-1.5 sm:px-2.5 rounded-xl themed-card flex items-center gap-1 text-xs font-bold hover:scale-105 active:scale-95 transition">
           <span>💡</span>
           <span id="txtCoinBalance">5</span>
-          <span class="text-[10px] px-1 rounded" style="background: var(--accent-primary); color: var(--accent-Contrast);">+</span>
+          <span class="text-[10px] px-1 rounded font-extrabold" style="background: var(--accent-primary); color: var(--accent-Contrast);">+</span>
         </button>
 
         <!-- Theme Quick Switcher -->
-        <button id="btnQuickTheme" class="w-9 h-9 rounded-xl themed-card flex items-center justify-center text-base" title="Switch Graphics World">
+        <button id="btnQuickTheme" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl themed-card flex items-center justify-center text-sm sm:text-base hover:scale-105 active:scale-95 transition" title="Switch Graphics World">
           🎨
         </button>
 
         <!-- Language Quick Switcher -->
-        <button id="btnOpenLangModal" class="px-2.5 h-9 rounded-xl themed-card flex items-center gap-1 text-xs font-bold" title="Language">
+        <button id="btnOpenLangModal" class="px-2 h-8 sm:h-9 rounded-xl themed-card flex items-center gap-0.5 sm:gap-1 text-[11px] sm:text-xs font-bold hover:scale-105 active:scale-95 transition" title="Language">
           <span>🌐</span>
           <span id="txtCurrentLangCode">EN</span>
         </button>
 
         <!-- Cloud Sync & Backup Hub Button -->
-        <button id="btnOpenCloudSync" class="px-2.5 h-9 rounded-xl themed-card flex items-center gap-1 text-xs font-bold" title="Cloud & Offline Storage Sync">
+        <button id="btnOpenCloudSync" class="w-8 h-8 sm:px-2.5 sm:h-9 rounded-xl themed-card flex items-center justify-center gap-1 text-xs font-bold hover:scale-105 active:scale-95 transition" title="Cloud & Offline Storage Sync">
           <span id="cloudSyncTopIcon">☁️</span>
-          <span id="cloudSyncDot" class="w-2 h-2 rounded-full" style="background: #34d399; width: 7px; height: 7px; display: inline-block;"></span>
+          <span id="cloudSyncDot" class="w-2 h-2 rounded-full" style="background: #34d399; width: 6px; height: 6px; display: inline-block;"></span>
         </button>
 
         <!-- Settings Button -->
-        <button id="btnOpenSettings" class="w-9 h-9 rounded-xl themed-card flex items-center justify-center text-base" title="Settings">
+        <button id="btnOpenSettings" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl themed-card flex items-center justify-center text-sm sm:text-base hover:scale-105 active:scale-95 transition" title="Settings">
           ⚙️
         </button>
       </div>
@@ -86,71 +86,92 @@
     <main class="relative z-10 flex-1 flex flex-col overflow-hidden">
 
       <!-- ==================== VIEW 1: ULTRA-CLEAN MOBILE MAIN MENU ==================== -->
-      <section id="viewHome" class="flex-1 overflow-y-auto px-6 py-6 flex flex-col items-center justify-center">
-        <div class="w-full max-w-xs my-auto flex flex-col items-center text-center gap-6 animate-pop">
+      <section id="viewHome" class="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6 flex flex-col items-center justify-center">
+        <div class="w-full max-w-sm my-auto flex flex-col items-center text-center gap-3.5 sm:gap-5 animate-pop">
 
-          <!-- Minimalist Emblem & Title -->
-          <div class="flex flex-col items-center gap-2.5">
-            <div class="w-20 h-20 rounded-3xl themed-surface flex items-center justify-center p-3.5 shadow-2xl relative hover:scale-105 transition cursor-pointer" id="heroArtEmoji" title="Switch Graphics World"></div>
-            <h2 id="txtHeroHeading" class="text-2xl font-black tracking-tight leading-tight mt-1">Master the Art of Deduction</h2>
-            <span id="badgeNoGuessHome" class="inline-flex items-center gap-1 text-[11px] font-bold px-3 py-0.5 rounded-full opacity-90" style="background: var(--accent-primary); color: var(--accent-Contrast);">
-              🧠 100% Pure Logic • Zero Guessing
-            </span>
+          <!-- Hero Branding & Emblem -->
+          <div class="flex flex-col items-center gap-1.5 sm:gap-2">
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl themed-surface flex items-center justify-center p-3.5 shadow-2xl relative hover:scale-105 active:scale-95 transition cursor-pointer" id="heroArtEmoji" title="Switch Graphics World"></div>
+            <div class="flex flex-col items-center gap-1">
+              <h2 id="txtHeroHeading" class="text-xl sm:text-2xl font-black tracking-tight leading-tight">Minesweeper Odyssey</h2>
+              <span id="badgeNoGuessHome" class="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-0.5 rounded-full shadow-sm" style="background: var(--accent-primary); color: var(--accent-Contrast);">
+                🧠 100% Pure Logic • Zero Guessing
+              </span>
+            </div>
             <p id="txtHeroDesc" class="hidden"></p>
           </div>
 
-          <!-- Main Menu Buttons (Includes Auto-Saved Match Resume & Daily Challenge) -->
+          <!-- Main Actions Hub -->
           <div class="w-full flex flex-col gap-2.5">
-            <button id="btnResumeSavedGame" class="hidden themed-elevated w-full py-3 px-4 rounded-2xl text-sm font-extrabold items-center justify-between gap-2 shadow-lg" style="border-color: var(--accent-secondary); border-width: 2px;">
+            <!-- Saved Match Banner (Appears only when an active game is in progress) -->
+            <button id="btnResumeSavedGame" class="hidden themed-elevated w-full py-3 px-4 rounded-2xl text-xs sm:text-sm font-extrabold items-center justify-between gap-2 shadow-lg border-2 hover:scale-[1.02] active:scale-95 transition" style="border-color: var(--accent-secondary);">
               <span class="flex items-center gap-2 truncate">
-                <span>⚡</span>
+                <span class="text-base animate-pulse">⚡</span>
                 <span id="txtBtnResumeGame" class="truncate">Resume Saved Match</span>
               </span>
-              <span id="txtResumeMetaBadge" class="text-[11px] font-mono px-2 py-0.5 rounded-lg themed-input shrink-0">00:00</span>
+              <span id="txtResumeMetaBadge" class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-lg themed-input shrink-0">00:00</span>
             </button>
 
-            <button id="btnOpenPlayModal" class="btn-primary w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 shadow-xl">
-              <span>▶️</span>
+            <!-- Main Play Button (Vibrant Hero CTA) -->
+            <button id="btnOpenPlayModal" class="btn-primary w-full py-3.5 sm:py-4 px-5 rounded-2xl text-base sm:text-lg font-black flex items-center justify-center gap-2.5 shadow-xl hover:scale-[1.02] active:scale-95 transition">
+              <span class="text-lg">▶️</span>
               <span id="txtMainBtnPlay">Play Game</span>
               <span id="txtMainBtnPlaySub" class="hidden"></span>
             </button>
 
-            <button id="btnStartStoryMenu" class="themed-card w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-95 transition">
-              <span>📖</span>
-              <span id="txtBtnStoryMode">Story Mode</span>
-            </button>
-            <span class="hidden" id="txtStoryCtaLabel">Story & Beginner Tutorial</span>
-            <span class="hidden" id="txtStoryProgressSummary">Chapter 1: Interactive Beginner Guide</span>
+            <!-- Dual Feature Cards: Campaign 50 Levels + Daily Challenge -->
+            <div class="grid grid-cols-2 gap-2.5 w-full">
+              <!-- 50-Level Campaign Mode -->
+              <button id="btnStartStoryMenu" class="themed-card rounded-2xl p-3 flex flex-col items-center justify-between text-center gap-1.5 shadow-md hover:scale-[1.02] active:scale-95 transition">
+                <div class="w-9 h-9 rounded-xl themed-elevated flex items-center justify-center text-lg">
+                  📖
+                </div>
+                <div class="min-w-0 w-full">
+                  <div id="txtBtnStoryMode" class="font-extrabold text-xs sm:text-sm leading-tight truncate">Campaign</div>
+                  <div id="txtStoryStarsSummary" class="text-[10px] font-mono mt-0.5 font-bold" style="color: var(--accent-primary);">⭐ 50 Levels</div>
+                </div>
+              </button>
+              <span class="hidden" id="txtStoryCtaLabel">Story & Beginner Tutorial</span>
+              <span class="hidden" id="txtStoryProgressSummary">Chapter 1: Interactive Beginner Guide</span>
 
-            <button id="btnOpenThemesStudio" class="themed-card w-full py-3.5 px-5 rounded-2xl text-base font-extrabold flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-95 transition">
-              <span>🎨</span>
-              <span id="txtMainBtnThemes">Graphics Worlds</span>
-              <span class="hidden" id="txtActiveThemeName">Classic Arcade 95</span>
-              <span class="hidden">5 3D</span>
-            </button>
+              <!-- Daily Logic Challenge -->
+              <button id="btnStartDailyChallenge" class="themed-card rounded-2xl p-3 flex flex-col items-center justify-between text-center gap-1.5 shadow-md hover:scale-[1.02] active:scale-95 transition" style="border-color: var(--accent-primary);">
+                <div class="w-9 h-9 rounded-xl themed-elevated flex items-center justify-center text-lg">
+                  📅
+                </div>
+                <div class="min-w-0 w-full">
+                  <div id="txtBtnDailyChallenge" class="font-extrabold text-xs sm:text-sm leading-tight truncate">Daily Challenge</div>
+                  <div class="flex items-center justify-center gap-1 mt-0.5">
+                    <span id="badgeDailyStatus" class="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full" style="background: var(--accent-primary); color: var(--accent-Contrast);">🔥 0</span>
+                    <span class="text-[10px] font-bold" style="color: var(--accent-secondary);">+3 💡</span>
+                  </div>
+                </div>
+              </button>
+            </div>
 
-            <button id="btnStartDailyChallenge" class="themed-card w-full py-3 px-4 rounded-2xl text-sm font-extrabold flex items-center justify-between gap-2 hover:scale-[1.02] active:scale-95 transition" style="border-color: var(--accent-primary);">
-              <span class="flex items-center gap-2">
-                <span>📅</span>
-                <span id="txtBtnDailyChallenge">Daily Logic Challenge</span>
+            <!-- Pro Graphics Worlds Studio Bar -->
+            <button id="btnOpenThemesStudio" class="themed-card w-full py-2.5 sm:py-3 px-4 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center justify-between gap-2 shadow-sm hover:scale-[1.02] active:scale-95 transition">
+              <span class="flex items-center gap-2 truncate">
+                <span class="text-base shrink-0">🎨</span>
+                <span id="txtMainBtnThemes" class="truncate">Graphics Worlds</span>
               </span>
-              <span id="badgeDailyStatus" class="text-[11px] font-mono px-2 py-0.5 rounded-full" style="background: var(--accent-primary); color: var(--accent-Contrast);">🔥 0</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-lg themed-input shrink-0" id="txtActiveThemeName">Classic 95</span>
             </button>
           </div>
 
-          <!-- Simple 3-Icon Bottom Row -->
-          <div class="w-full grid grid-cols-3 gap-2.5 pt-1">
-            <button id="btnHomeTutorial" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] transition">
-              <span class="text-lg">🎓</span>
-              <span class="text-[11px] font-bold" id="txtNavTutorial">How to Play</span>
+          <!-- Bottom Utility Row: How to Play + Stats + Support Us -->
+          <div class="w-full grid grid-cols-3 gap-2 pt-0.5">
+            <button id="btnHomeTutorial" class="themed-card rounded-2xl py-2 px-1.5 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] active:scale-95 transition">
+              <span class="text-base">🎓</span>
+              <span class="text-[10px] sm:text-[11px] font-bold truncate max-w-full" id="txtNavTutorial">How to Play</span>
             </button>
-            <button id="btnHomeStats" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] transition">
-              <span class="text-lg">🏆</span>
-              <span class="text-[11px] font-bold" id="txtNavStats">Stats & Ranks</span>
+            <button id="btnHomeStats" class="themed-card rounded-2xl py-2 px-1.5 flex flex-col items-center justify-center gap-1 text-center hover:scale-[1.02] active:scale-95 transition">
+              <span class="text-base">🏆</span>
+              <span class="text-[10px] sm:text-[11px] font-bold truncate max-w-full" id="txtNavStats">Stats</span>
             </button>
-            <button id="btnHomeSupport" class="themed-card rounded-2xl py-2.5 px-2 flex flex-col items-center justify-center gap-1 text-center relative overflow-hidden hover:scale-[1.02] transition" style="border-color: var(--accent-primary);">
-              <span class="text-lg">💝</span>
-              <span class="text-[11px] font-bold" style="color: var(--accent-primary);" id="txtNavSupport">Support Us</span>
+            <button id="btnHomeSupport" class="themed-card rounded-2xl py-2 px-1.5 flex flex-col items-center justify-center gap-1 text-center relative overflow-hidden hover:scale-[1.02] active:scale-95 transition" style="border-color: var(--accent-primary);">
+              <span class="text-base">💝</span>
+              <span class="text-[10px] sm:text-[11px] font-bold truncate max-w-full" style="color: var(--accent-primary);" id="txtNavSupport">Support</span>
             </button>
           </div>
 
@@ -301,7 +322,7 @@
     </main>
 
     <!-- ==================== MODAL 0A: PLAY / DIFFICULTY SELECTOR ==================== -->
-    <div id="modalPlaySelect" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalPlaySelect" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <h3 id="txtSelectDifficulty" class="font-extrabold text-base sm:text-lg flex items-center gap-2">
@@ -407,7 +428,7 @@
     </div>
 
     <!-- ==================== MODAL 0B: PRO GRAPHICS WORLDS STUDIO ==================== -->
-    <div id="modalThemesStudio" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalThemesStudio" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <h3 class="font-extrabold text-base flex items-center gap-2">
@@ -425,7 +446,7 @@
     </div>
 
     <!-- ==================== MODAL 1: SETTINGS & CONTROLS CUSTOMIZATION ==================== -->
-    <div id="modalSettings" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalSettings" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-4 animate-pop">
         <div class="flex items-center justify-between border-b pb-3" style="border-color: var(--border-color);">
           <h3 class="font-extrabold text-base sm:text-lg flex items-center gap-2">
@@ -503,7 +524,7 @@
     </div>
 
     <!-- ==================== MODAL 2: 9 LANGUAGES SELECTOR ==================== -->
-    <div id="modalLanguages" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalLanguages" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <h3 class="font-extrabold text-base flex items-center gap-2">
@@ -516,14 +537,14 @@
     </div>
 
     <!-- ==================== MODAL 3: SUPPORT US / CREATOR SUPPORT & STORE HUB ==================== -->
-    <div id="modalSupport" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalSupport" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <div>
             <h3 class="font-extrabold text-base sm:text-lg flex items-center gap-2">
               <span>💝</span> <span id="txtSupportTitle">Support the Developers</span>
             </h3>
-            <p id="txtSupportSubtitle" class="text-xs" style="color: var(--text-secondary);">Help us keep the game 100% fair, logical & growing!</p>
+            <p id="txtSupportSubtitle" class="text-xs" style="color: var(--text-secondary);">100% Free, pure & forever ad-free! Your support helps us grow.</p>
           </div>
           <button id="btnCloseSupport" class="w-8 h-8 rounded-lg themed-card flex items-center justify-center font-bold">✕</button>
         </div>
@@ -549,7 +570,7 @@
               <span class="text-2xl">🌟</span>
               <div>
                 <div class="font-bold text-xs sm:text-sm" id="txtTier2Title">Oasis Patron Pack</div>
-                <div class="text-[11px]" style="color: var(--text-secondary);" id="txtTier2Desc">VIP Crown Badge + 30 Logic Hints + Ad-Free</div>
+                <div class="text-[11px]" style="color: var(--text-secondary);" id="txtTier2Desc">VIP Crown Badge + 30 Logic Hints + All Worlds Unlocked</div>
               </div>
             </div>
             <button data-tier="patron" data-coins="30" class="support-tier-btn btn-primary px-3 py-1.5 rounded-xl text-xs shrink-0">$4.99</button>
@@ -570,15 +591,15 @@
         <div class="pt-2 border-t flex flex-col gap-2" style="border-color: var(--border-color);">
           <div class="text-xs font-bold uppercase tracking-wider" style="color: var(--accent-primary);" id="txtFreeSupportHeader">Free Ways to Support Us</div>
           <div class="grid grid-cols-3 gap-2">
-            <button id="btnSupportWatchAd" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
-              <span class="text-lg">🎬</span>
-              <span id="txtBtnBonusHint">Free +3 Hints</span>
+            <button id="btnSupportWatchAd" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold hover:scale-105 active:scale-95 transition">
+              <span class="text-lg">🎁</span>
+              <span id="txtBtnBonusHint">Daily Gift (+3 💡)</span>
             </button>
-            <button id="btnSupportRate" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
+            <button id="btnSupportRate" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold hover:scale-105 active:scale-95 transition">
               <span class="text-lg">⭐</span>
               <span id="txtBtnRateApp">Rate 5 Stars</span>
             </button>
-            <button id="btnSupportShare" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold">
+            <button id="btnSupportShare" class="themed-elevated p-2.5 rounded-xl flex flex-col items-center gap-1 text-center text-xs font-semibold hover:scale-105 active:scale-95 transition">
               <span class="text-lg">📤</span>
               <span id="txtBtnShareApp">Share Game</span>
             </button>
@@ -588,7 +609,7 @@
     </div>
 
     <!-- ==================== MODAL 4: STATS & HALL OF RECORDS ==================== -->
-    <div id="modalStats" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalStats" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <h3 class="font-extrabold text-base flex items-center gap-2">
@@ -647,7 +668,7 @@
     </div>
 
     <!-- ==================== MODAL 5: VICTORY / GAME OVER OVERLAY ==================== -->
-    <div id="modalGameResult" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 backdrop-blur-sm">
+    <div id="modalGameResult" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
       <div class="themed-surface w-full max-w-sm rounded-2xl p-5 text-center flex flex-col items-center gap-3.5 animate-pop">
         <div id="resultEmoji" class="text-5xl">🏆</div>
         <h3 id="resultTitle" class="text-xl font-extrabold">Victory!</h3>
@@ -684,7 +705,7 @@
     </div>
 
     <!-- ==================== MODAL 6: ILLUSTRATED STORY CUTSCENE ==================== -->
-    <div id="modalStoryCutscene" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div id="modalStoryCutscene" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 ">
       <div class="themed-surface w-full max-w-lg rounded-3xl overflow-hidden flex flex-col max-h-[92vh] animate-pop border-2" style="border-color: var(--accent-primary);">
         <!-- Illustrated Scene Artwork Header -->
         <div id="cutsceneArtContainer" class="w-full h-44 sm:h-52 relative overflow-hidden shrink-0 border-b" style="border-color: var(--border-color); background: #071018;">
@@ -720,7 +741,7 @@
     </div>
 
     <!-- ==================== MODAL 7: HYBRID CLOUD + LOCAL STORAGE & APK CENTER ==================== -->
-    <div id="modalCloudSync" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+    <div id="modalCloudSync" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 ">
       <div class="themed-surface w-full max-w-md rounded-2xl p-4 sm:p-5 max-h-[90vh] overflow-y-auto flex flex-col gap-3.5 animate-pop">
         <div class="flex items-center justify-between border-b pb-2.5" style="border-color: var(--border-color);">
           <div>
