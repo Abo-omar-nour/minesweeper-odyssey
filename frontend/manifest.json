@@ -1,0 +1,30 @@
+{
+  "name": "Minesweeper Odyssey: Ultimate Edition",
+  "short_name": "Minesweeper",
+  "description": "100% Pure Logic No-Guess Minesweeper with 6 3D Worlds, 50-Level Campaign & Interactive Replay Theater",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c141c",
+  "theme_color": "#0c141c",
+  "icons": [
+    {
+      "src": "assets/icons/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

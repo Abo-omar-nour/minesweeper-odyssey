@@ -1,0 +1,15 @@
+{
+  "name": "minesweeper-odyssey",
+  "version": "2.4.0",
+  "description": "Minesweeper Odyssey \u2014 Pro Graphics Worlds & 100% Logical No-Guess Edition",
+  "main": "frontend/index.html",
+  "scripts": {
+    "start": "npx serve frontend",
+    "cap:sync": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/core": "^6.0.0"
+  }
+}
