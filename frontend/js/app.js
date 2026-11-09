@@ -14,8 +14,8 @@
         particleColors: ['#f5b041', '#2dd4bf', '#fde047', '#fffbeb'],
         soundWave: 'triangle',
         basePitch: 330,
-        descEn: '3D Damascus Mosaic Tiles • Royal Fanous Lanterns • Desert Starlight & Golden Embers',
-        descAr: 'بلاط فسيفساء دمشقي ثلاثي الأبعاد • فوانيس ملكية مضيئة • سماء صحراوية ومؤثرات ذهبية'
+        descEn: 'Oriental motifs & glowing lanterns',
+        descAr: 'زخارف شرقية وفوانيس مضيئة'
       },
 
       obsidian: {
@@ -30,8 +30,8 @@
         particleColors: ['#38bdf8', '#a855f7', '#f43f5e', '#2dd4bf'],
         soundWave: 'sawtooth',
         basePitch: 420,
-        descEn: 'Chamfered Sci-Fi Armor Tiles • Holo-Plasma Shields • Live Matrix Digital Rain & Neon Lasers',
-        descAr: 'دروع هولوغرام مستقبلية • شارات بلازما مضيئة • أمطار رقمية حية وشبكة ليزر نيون'
+        descEn: 'Futuristic neon cyber style',
+        descAr: 'تصميم مستقبلي بأضواء النيون'
       },
 
       retro: {
@@ -46,8 +46,8 @@
         particleColors: ['#000080', '#dc2626', '#008080', '#ffffff'],
         soundWave: 'square',
         basePitch: 260,
-        descEn: 'Tactile 4px 3D Beveled Keycaps • Classic Red Pennants • Floating 3D Retro Wireframes',
-        descAr: 'أزرار ثلاثية الأبعاد بارزة • أعلام وألغام ويندوز 95 الأصيلة • مجسمات هندسية متحركة'
+        descEn: 'Authentic classic 95 style',
+        descAr: 'التصميم الكلاسيكي الأصيل'
       },
 
       retro_dark: {
@@ -58,8 +58,8 @@
         particleColors: ['#38bdf8', '#f43f5e', '#2dd4bf', '#94a3b8'],
         soundWave: 'square',
         basePitch: 240,
-        descEn: 'Eye-Friendly Dark 3D Keycaps • High-Contrast Night Numbers • Classic Tactile Feel (Free)',
-        descAr: 'الثيمة الكلاسيكية بالوضع الليلي المريح للعين • أزرار ثلاثية الأبعاد داكنة وأرقام عالية التباين (مجانية)'
+        descEn: 'Eye-friendly dark classic style',
+        descAr: 'تصميم كلاسيكي ليلي مريح للعين'
       },
 
       sakura: {
@@ -74,8 +74,8 @@
         particleColors: ['#fb7185', '#fda4af', '#e11d48', '#fef08a'],
         soundWave: 'sine',
         basePitch: 493.88,
-        descEn: 'Carved Lacquer Blossom Tiles • Sacred Torii Charms • Drifting 3D Cherry Blossom Petals',
-        descAr: 'بلاط خشب الساكورا المزخرف • تعويذات توري اليابانية • بتلات أزهار الكرز المتساقطة'
+        descEn: 'Calm Japanese cherry blossoms',
+        descAr: 'أزهار الكرز اليابانية الهادئة'
       },
 
       emerald: {
@@ -90,8 +90,8 @@
         particleColors: ['#34d399', '#fbbf24', '#2dd4bf', '#a7f3d0'],
         soundWave: 'sine',
         basePitch: 392,
-        descEn: '3D Faceted Emerald Gem Tiles • Golden Poseidon Tridents • Bioluminescent Bubbles & Rays',
-        descAr: 'أحجار زمرد مصقولة ثلاثية الأبعاد • رماح أطلانطس الذهبية • فقاعات وأشعة مائية متوهجة'
+        descEn: 'Deep ocean & emerald gems',
+        descAr: 'أعماق المحيط وأحجار الزمرد'
       }
     };
 
@@ -104,10 +104,10 @@
     const THEME_UNLOCK_RULES = {
       retro:      { free: true,  reqLevel: 0,  coinCost: 0 },
       retro_dark: { free: true,  reqLevel: 0,  coinCost: 0 },
-      sakura:     { free: false, reqLevel: 5,  coinCost: 15, labelAr: 'تفتح مجاناً عند إتمام المرحلة 5 (أو 15 💡 / اشتراك VIP)', labelEn: 'Unlocks at Level 5 (or 15 💡 / VIP Pack)' },
-      emerald:    { free: false, reqLevel: 15, coinCost: 20, labelAr: 'تفتح مجاناً عند إتمام المرحلة 15 (أو 20 💡 / اشتراك VIP)', labelEn: 'Unlocks at Level 15 (or 20 💡 / VIP Pack)' },
-      arabian:    { free: false, reqLevel: 30, coinCost: 25, labelAr: 'تفتح مجاناً عند إتمام المرحلة 30 (أو 25 💡 / اشتراك VIP)', labelEn: 'Unlocks at Level 30 (or 25 💡 / VIP Pack)' },
-      obsidian:   { free: false, reqLevel: 50, coinCost: 30, labelAr: 'تفتح مجاناً عند ختام المرحلة 50 (أو 30 💡 / اشتراك VIP)', labelEn: 'Unlocks at Level 50 Finale (or 30 💡 / VIP Pack)' }
+      sakura:     { free: false, reqLevel: 5,  coinCost: 15, labelAr: 'تُفتح في المرحلة 5 أو بـ 15 💡', labelEn: 'Unlocks at Level 5 or 15 💡' },
+      emerald:    { free: false, reqLevel: 15, coinCost: 20, labelAr: 'تُفتح في المرحلة 15 أو بـ 20 💡', labelEn: 'Unlocks at Level 15 or 20 💡' },
+      arabian:    { free: false, reqLevel: 30, coinCost: 25, labelAr: 'تُفتح في المرحلة 30 أو بـ 25 💡', labelEn: 'Unlocks at Level 30 or 25 💡' },
+      obsidian:   { free: false, reqLevel: 50, coinCost: 30, labelAr: 'تُفتح في المرحلة 50 أو بـ 30 💡', labelEn: 'Unlocks at Level 50 or 30 💡' }
     };
 
     const THEMES = {
@@ -1345,12 +1345,12 @@
         customRows: 'Rows (Height)',
         customMines: 'Mines',
         btnPlayCustom: 'Launch Custom Board',
-        homeThemesTitle: '5 Pro Graphics Worlds (Live 3D & VFX)',
+        homeThemesTitle: 'Themes & Appearance',
         navTutorial: 'How to Play',
         navStats: 'Records',
         navSupport: 'Support Us',
-        storyMapTitle: 'Minesweeper Odyssey — 50 Levels',
-        storyMapSub: 'Learn step-by-step, then conquer 100% logical story chapters',
+        storyMapTitle: 'Campaign Mode (50 Levels)',
+        storyMapSub: '5 quick tutorials followed by 45 progressive logic stages',
         menuBtn: 'Menu',
         hintBtn: 'Logic Hint',
         modeDig: 'Dig',
@@ -1358,7 +1358,7 @@
         pureLogicActive: 'Pure Logic Active',
         randomModeActive: 'Classic Random Mode',
         settingsTitle: 'Settings & Custom Controls',
-        settingThemeLabel: 'Pro Graphics World (Changes 3D Tiles, Sprites, VFX & Scenery)',
+        settingThemeLabel: 'Game Theme',
         settingControlsHeader: 'Touch & Mouse Controls',
         setPrimaryTap: 'Default Tap / Click Action',
         setPrimaryTapSub: 'Action when tapping a cell normally',
@@ -1399,12 +1399,12 @@
         btnPlayAgain: 'Play Again',
         btnNextChapter: 'Next Chapter',
         themes: {
-          retro: 'Classic Arcade 95 — Light (Free Default)',
-          retro_dark: 'Classic Arcade 95 — Dark Mode 🌙 (Free Default)',
-          sakura: 'Imperial Sakura Zen 🌸 (Level 5 Reward / VIP)',
-          emerald: 'Sunken Atlantis 🌿 (Level 15 Reward / VIP)',
-          arabian: 'Arabian Nights 🕌 (Level 30 Reward / VIP)',
-          obsidian: 'Cyber Neon 2099 🌌 (Level 50 Finale / VIP)'
+          retro: 'Classic 95',
+          retro_dark: 'Classic Dark 🌙',
+          sakura: 'Sakura 🌸',
+          emerald: 'Atlantis 🌿',
+          arabian: 'Arabian Nights 🕌',
+          obsidian: 'Cyber Neon 🌌'
         },
         storyChapters: [
           { title: 'Level 1: First Steps & The Corner "1"', sub: 'Interactive Tutorial 1/5: Safe opening, reading "1", and your first Flag', badge: '🎓 Tutorial 1/5' },
@@ -1477,12 +1477,12 @@
         customRows: 'الصفوف (الطول)',
         customMines: 'الألغام',
         btnPlayCustom: 'ابدأ اللوحة المخصصة',
-        homeThemesTitle: '5 عوالم غرافيكس احترافية (مجسمات ومؤثرات حية)',
+        homeThemesTitle: 'الثيمات والمظهر',
         navTutorial: 'كيف تلعب',
         navStats: 'الإحصائيات',
         navSupport: 'ادعمنا',
-        storyMapTitle: 'حملة الـ 50 مستوى وأكاديمية التأهيل',
-        storyMapSub: 'أول 5 مراحل تؤهلك تفاعلياً من الصفر • تليها 45 مرحلة متدرجة الصعوبة حتى الاحتراف',
+        storyMapTitle: 'طور القصة (50 مرحلة)',
+        storyMapSub: '5 مراحل تعليمية سريعة تليها 45 مرحلة متدرجة الصعوبة',
         menuBtn: 'القائمة',
         hintBtn: 'تلميح منطقي',
         modeDig: 'حفر',
@@ -1490,14 +1490,14 @@
         pureLogicActive: 'نظام بدون تخمين مفعّل',
         randomModeActive: 'النظام الكلاسيكي العشوائي',
         settingsTitle: 'الإعدادات وتخصيص التحكم',
-        settingThemeLabel: 'عالم الغرافيكس (يغيّر المجسمات، الأعلام، الألغام، والبيئة المتحركة)',
+        settingThemeLabel: 'ثيم اللعبة',
         settingControlsHeader: 'تخصيص التحكم للمس والفأرة',
         setPrimaryTap: 'وظيفة النقر الأساسي',
         setPrimaryTapSub: 'الإجراء عند لمس المربع نقرة عادية',
         optTapDig: '⛏️ حفر (كشف المربع)',
         optTapFlag: '🚩 وضع علم',
         setLongPress: 'مدة الضغطة المطولة باللمس (للإجراء المعاكس)',
-        setChordLabel: 'الكشف السريع عند النقر على الرقم (Chording)',
+        setChordLabel: 'الفتح السريع عند النقر على الرقم المكتمل',
         setChordSub: 'انقر على الرقم المكتمل لفتح المربعات الآمنة حوله فوراً',
         setNoGuessLabel: 'نظام اللعب بدون تخمين (منطق 100%)',
         setNoGuessSub: 'يضمن أن كل لوحة قابلة للحل بالاستنتاج العقلي فقط',
@@ -1531,16 +1531,16 @@
         btnPlayAgain: 'العب مجدداً',
         btnNextChapter: 'الفصل التالي',
         themes: {
-          retro: 'الكلاسيكية النهارية 95 (أساسية مجانية)',
-          retro_dark: 'الكلاسيكية بالوضع الليلي 95 🌙 (أساسية مجانية)',
-          sakura: 'إمبراطورية الساكورا 🌸 (مكافأة المرحلة 5 أو VIP)',
-          emerald: 'معبد أطلانطس الغارق 🌿 (مكافأة المرحلة 15 أو VIP)',
-          arabian: 'ألف ليلة وليلة — دمشق 🕌 (مكافأة المرحلة 30 أو VIP)',
-          obsidian: 'سايبر نيون 2099 🌌 (ختام المرحلة 50 أو VIP)'
+          retro: 'الكلاسيكية 95',
+          retro_dark: 'الكلاسيكية الليلية 🌙',
+          sakura: 'الساكورا 🌸',
+          emerald: 'أطلانطس 🌿',
+          arabian: 'ألف ليلة وليلة 🕌',
+          obsidian: 'سايبر نيون 🌌'
         },
         storyChapters: [
           { title: 'المستوى 1: الخطوات الأولى وقاعدة الرقم (1)', sub: 'تأهيل تفاعلي 1/5: تَعلّم معنى الأرقام، وضع أول علم، وفتح المربع الآمن', badge: '🎓 تأهيل 1/5' },
-          { title: 'المستوى 2: قراءة الرقم (2) والكشف السريع', sub: 'تأهيل تفاعلي 2/5: استنتاج الألغام المزدوجة ومهارة النقر السريع Chording', badge: '🎓 تأهيل 2/5' },
+          { title: 'المستوى 2: قراءة الرقم (2) والكشف السريع', sub: 'تأهيل تفاعلي 2/5: استنتاج الألغام المزدوجة ومهارة الفتح السريع بلمسة واحدة', badge: '🎓 تأهيل 2/5' },
           { title: 'المستوى 3: الاستنتاج المشترك على الحواف', sub: 'تأهيل تفاعلي 3/5: ربط الأرقام المتجاورة لكشف الممرات المغلقة', badge: '🎓 تأهيل 3/5' },
           { title: 'المستوى 4: شفرة المحترفين الشهيرة (1-2-1)', sub: 'تأهيل تفاعلي 4/5: إتقان قاعدة الجدار (1-2-1) بدون أي تخمين', badge: '🎓 تأهيل 4/5' },
           { title: 'المستوى 5: امتحان التخرج وشفرة (1-2-2-1)', sub: 'تأهيل تفاعلي 5/5: إتقان نمط (1-2-2-1) المتقدم والتخرج نحو الـ 50 مستوى!', badge: '🎓 تأهيل 5/5' }
@@ -1663,12 +1663,12 @@
         btnPlayAgain: 'Jugar de Nuevo',
         btnNextChapter: 'Siguiente Capítulo',
         themes: {
-          arabian: 'Noches de Arabia (Palacio de Damasco 3D)',
-          obsidian: 'Cyber Neon 2099 (Holo-Matrix 3D)',
-          retro: 'Clásico Retro 95 (Teclas 3D)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'Jardín Imperial Sakura (Pétalos 3D)',
-          emerald: 'Atlántida Sumergida (Gemas Esmeralda)'
+          arabian: 'Noches de Arabia 🕌',
+          obsidian: 'Cyber Neon 🌌',
+          retro: 'Clásico 95',
+          retro_dark: 'Clásico Oscuro 🌙',
+          sakura: 'Sakura 🌸',
+          emerald: 'Atlántida 🌿'
         }
       },
       fr: {
@@ -1747,12 +1747,12 @@
         btnPlayAgain: 'Rejouer',
         btnNextChapter: 'Chapitre Suivant',
         themes: {
-          arabian: 'Mille et Une Nuits (Palais de Damas 3D)',
-          obsidian: 'Cyber Neon 2099 (Holo-Matrix 3D)',
-          retro: 'Classique Rétro 95 (Touches 3D)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'Jardin Impérial Sakura (Pétales 3D)',
-          emerald: 'Atlantide Engloutie (Cristaux Émeraude)'
+          arabian: 'Mille et Une Nuits 🕌',
+          obsidian: 'Cyber Neon 🌌',
+          retro: 'Classique 95',
+          retro_dark: 'Classique Sombre 🌙',
+          sakura: 'Sakura 🌸',
+          emerald: 'Atlantide 🌿'
         }
       },
       de: {
@@ -1831,12 +1831,12 @@
         btnPlayAgain: 'Nochmal spielen',
         btnNextChapter: 'Nächstes Kapitel',
         themes: {
-          arabian: 'Tausendundeine Nacht (Damaskus-Palast 3D)',
-          obsidian: 'Cyber Neon 2099 (Holo-Matrix 3D)',
-          retro: 'Klassisch Retro 95 (3D-Tasten)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'Sakura-Garten Zen (Blütenblätter 3D)',
-          emerald: 'Versunkenes Atlantis (Smaragd-Kristalle)'
+          arabian: 'Tausendundeine Nacht 🕌',
+          obsidian: 'Cyber Neon 🌌',
+          retro: 'Klassisch 95',
+          retro_dark: 'Klassisch Dunkel 🌙',
+          sakura: 'Sakura 🌸',
+          emerald: 'Atlantis 🌿'
         }
       },
       ja: {
@@ -1915,12 +1915,12 @@
         btnPlayAgain: 'もう一度プレイ',
         btnNextChapter: '次の章へ',
         themes: {
-          arabian: 'アラビアンナイト (ダマスカス宮殿3D)',
-          obsidian: 'サイバーネオン2099 (ホロマトリックス3D)',
-          retro: 'クラシック95 (立体3Dキーキャップ)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'サクラ庭園 (木版タイル＆舞い散る花びら)',
-          emerald: '海底都市アトランティス (エメラルド結晶)'
+          arabian: 'アラビアンナイト 🕌',
+          obsidian: 'サイバーネオン 🌌',
+          retro: 'クラシック 95',
+          retro_dark: 'クラシック ダーク 🌙',
+          sakura: 'サクラ 🌸',
+          emerald: 'アトランティス 🌿'
         }
       },
       zh: {
@@ -1999,12 +1999,12 @@
         btnPlayAgain: '再玩一局',
         btnNextChapter: '下一章节',
         themes: {
-          arabian: '一千零一夜 (大马士革3D镶嵌与神灯)',
-          obsidian: '赛博霓虹 2099 (全息装甲与矩阵激光)',
-          retro: '经典街机 95 (高浮雕3D机械键帽)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: '帝国樱花庭院 (木刻雕花与飘落花瓣)',
-          emerald: '失落亚特兰蒂斯 (3D切割祖母绿水晶)'
+          arabian: '一千零一夜 🕌',
+          obsidian: '赛博霓虹 🌌',
+          retro: '经典 95',
+          retro_dark: '经典暗黑 🌙',
+          sakura: '樱花 🌸',
+          emerald: '亚特兰蒂斯 🌿'
         }
       },
       ru: {
@@ -2083,12 +2083,12 @@
         btnPlayAgain: 'Ещё Раз',
         btnNextChapter: 'След. Глава',
         themes: {
-          arabian: 'Арабская Ночь (Дворец Дамаска 3D)',
-          obsidian: 'Кибер-Неон 2099 (Голо-Матрица 3D)',
-          retro: 'Классика Ретро 95 (3D Клавиши)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'Императорская Сакура (Лепестки 3D)',
-          emerald: 'Затонувшая Атлантида (Кристаллы)'
+          arabian: 'Арабская Ночь 🕌',
+          obsidian: 'Кибер-Неон 🌌',
+          retro: 'Классика 95',
+          retro_dark: 'Тёмная Классика 🌙',
+          sakura: 'Сакура 🌸',
+          emerald: 'Атлантида 🌿'
         }
       },
       tr: {
@@ -2167,12 +2167,12 @@
         btnPlayAgain: 'Tekrar Oyna',
         btnNextChapter: 'Sonraki Bölüm',
         themes: {
-          arabian: 'Binbir Gece (Şam Sarayı 3D & Fenerler)',
-          obsidian: 'Siber Neon 2099 (Holo-Matris 3D)',
-          retro: 'Klasik Retro 95 (3D Mekanik Tuşlar)',
-          retro_dark: 'Classic 95 — Dark Mode 🌙',
-          sakura: 'İmparatorluk Sakura (Ahşap & Yapraklar)',
-          emerald: 'Batık Atlantis (3D Zümrüt Kristaller)'
+          arabian: 'Binbir Gece 🕌',
+          obsidian: 'Siber Neon 🌌',
+          retro: 'Klasik 95',
+          retro_dark: 'Karanlık Klasik 🌙',
+          sakura: 'Sakura 🌸',
+          emerald: 'Atlantis 🌿'
         }
       }
     };
@@ -2223,9 +2223,9 @@
         range: [21, 30],
         themeId: 'emerald',
         icon: '🌿',
-        nameAr: 'الفصل 3: معبد أطلانطس الغارق (21–30)',
-        nameEn: 'Act III: Sunken Atlantis Sanctum (21–30)',
-        artSvg: `<svg viewBox="0 0 600 200" class="w-full h-full"><rect width="600" height="200" fill="#022c22"/><polygon points="200,45 400,45 300,15" fill="#064e3b" stroke="#34d399" stroke-width="2"/><rect x="220" y="45" width="20" height="105" fill="#064e3b"/><rect x="290" y="45" width="20" height="105" fill="#064e3b"/><rect x="360" y="45" width="20" height="105" fill="#064e3b"/><path d="M0,150 L600,150 L600,200 L0,200 Z" fill="#011510"/><text x="300" y="180" fill="#6ee7b7" font-size="15" font-weight="bold" text-anchor="middle">🌿 Act III: Sunken Atlantis Sanctum (Levels 21–30)</text></svg>`
+        nameAr: 'الفصل 3: أطلانطس الغارقة (21–30)',
+        nameEn: 'Act III: Sunken Atlantis (21–30)',
+        artSvg: `<svg viewBox="0 0 600 200" class="w-full h-full"><rect width="600" height="200" fill="#022c22"/><polygon points="200,45 400,45 300,15" fill="#064e3b" stroke="#34d399" stroke-width="2"/><rect x="220" y="45" width="20" height="105" fill="#064e3b"/><rect x="290" y="45" width="20" height="105" fill="#064e3b"/><rect x="360" y="45" width="20" height="105" fill="#064e3b"/><path d="M0,150 L600,150 L600,200 L0,200 Z" fill="#011510"/><text x="300" y="180" fill="#6ee7b7" font-size="15" font-weight="bold" text-anchor="middle">🌿 Act III: Sunken Atlantis (Levels 21–30)</text></svg>`
       },
       {
         act: 4,
@@ -2250,7 +2250,7 @@
     const LEVEL_TITLES_AR = [
       // 1-5: Onboarding Tutorials
       'المستوى 1: الخطوات الأولى وقاعدة الرقم (1)',
-      'المستوى 2: قراءة الرقم (2) والكشف السريع Chording',
+      'المستوى 2: قراءة الرقم (2) والفتح السريع بلمسة واحدة',
       'المستوى 3: الاستنتاج المشترك على الحواف',
       'المستوى 4: شفرة المحترفين الشهيرة (1-2-1)',
       'المستوى 5: امتحان التخرج وشفرة (1-2-2-1)',
@@ -2459,34 +2459,30 @@
       let badge = '';
       let sub = '';
       if (spec.isTutorial) {
-        badge = isAr ? `🎓 مرحلة تأهيل ${levelId}/5` : `🎓 Tutorial ${levelId}/5`;
+        badge = isAr ? `🎓 تعليم ${levelId}/5` : `🎓 Tutorial ${levelId}/5`;
         const tutSubsAr = [
-          'الدرس 1: ما معنى الرقم؟ ومتى نضع علماً 🚩 أو نحفر ⛏️؟',
-          'الدرس 2: الرقم (2) ومهارة الفتح السريع بلمسة واحدة ⚡',
-          'الدرس 3: كيف تفتح المربعات بمقارنة رقمين متجاورين (1–1) 🔗',
-          'الدرس 4: سرّ المحترفين لكشف الألغام على الحواف (1–2–1) 🎯',
-          'الدرس 5: تطبيق شامل سريع والتخرج نحو الـ 50 مرحلة 🎓'
+          'أساسيات الأرقام ووضع الأعلام 🚩',
+          'الفتح السريع بلمسة واحدة ⚡',
+          'مقارنة رقمين متجاورين 🔗',
+          'قاعدة (1-2-1) السريعة 🎯',
+          'تحدي التخرج السريع 🎓'
         ];
         const tutSubsEn = [
-          'Lesson 1: What numbers mean & when to Flag 🚩 or Dig ⛏️',
-          'Lesson 2: Reading "2" & 1-Tap Quick Reveal (Chording) ⚡',
-          'Lesson 3: Comparing two adjacent numbers (1–1 Rule) 🔗',
-          'Lesson 4: The famous 1–2–1 wall trick 🎯',
-          'Lesson 5: Quick graduation challenge 🎓'
+          'Numbers & placing flags 🚩',
+          '1-Tap Quick Open ⚡',
+          'Comparing adjacent numbers 🔗',
+          'The 1-2-1 pattern 🎯',
+          'Graduation challenge 🎓'
         ];
         sub = isAr ? tutSubsAr[idx] : tutSubsEn[idx];
       } else if (spec.isBoss) {
         badge = isAr ? `👑 زعيم الفصل ${spec.act}` : `👑 Act ${spec.act} Boss`;
-        sub = isAr
-          ? `اختبار حاسم في نهاية الفصل ${spec.act} (${spec.cols}×${spec.rows} • ${spec.mines} 💣 • منطق 100%)`
-          : `Milestone Boss Challenge for Act ${spec.act} (${spec.cols}×${spec.rows} • ${spec.mines} 💣 • 100% Logic)`;
+        sub = isAr ? `تحدي ختام الفصل ${spec.act}` : `Act ${spec.act} Boss Stage`;
       } else {
-        badge = isAr ? `${actObj.icon} المستوى ${levelId}/50` : `${actObj.icon} Level ${levelId}/50`;
-        const tierNameAr = spec.id <= 10 ? 'مبتدئ مؤهل' : (spec.id <= 20 ? 'متدرج' : (spec.id <= 30 ? 'متوسط متقدم' : (spec.id <= 40 ? 'خبير تكتيكي' : 'أسطوري محترف')));
-        const tierNameEn = spec.id <= 10 ? 'Qualified Rookie' : (spec.id <= 20 ? 'Rising Sapper' : (spec.id <= 30 ? 'Intermediate Pro' : (spec.id <= 40 ? 'Tactical Expert' : 'Grandmaster')));
-        sub = isAr
-          ? `صعوبة متدرجة: ${tierNameAr} (${spec.cols}×${spec.rows} • ${spec.mines} 💣)`
-          : `Progressive Difficulty: ${tierNameEn} (${spec.cols}×${spec.rows} • ${spec.mines} 💣)`;
+        badge = isAr ? `${actObj.icon} مرحلة ${levelId}` : `${actObj.icon} Stage ${levelId}`;
+        const tierNameAr = spec.id <= 10 ? 'مبتدئ' : (spec.id <= 20 ? 'متدرج' : (spec.id <= 30 ? 'متوسط' : (spec.id <= 40 ? 'خبير' : 'محترف')));
+        const tierNameEn = spec.id <= 10 ? 'Rookie' : (spec.id <= 20 ? 'Regular' : (spec.id <= 30 ? 'Intermediate' : (spec.id <= 40 ? 'Expert' : 'Master')));
+        sub = isAr ? `المستوى: ${tierNameAr}` : `Tier: ${tierNameEn}`;
       }
 
       return { title, sub, badge, actObj };
@@ -2499,18 +2495,18 @@
       const actObj = metaAr.actObj;
 
       const tutLessonsAr = [
-        '🎓 هدف المرحلة 1: إذا رأيت الرقم (1) لا يلامس سوى مربع مخفي واحد في الزاوية، فهذا المربع هو لغم 100%! وإذا كان الرقم (1) يلامس علماً بالفعل، فكل جيرانه الآخرين آمنون تماماً.',
-        '🎓 هدف المرحلة 2: عندما يكتمل عدد الأعلام حول أي رقم (مثل رقم 2 يلامس علمين)، انقر مباشرة على نفس الرقم ليفتح جميع جيرانه الآمنين دفعة واحدة (Chording)!',
-        '🎓 هدف المرحلة 3: اربط بين الأرقام المتجاورة في الزوايا والحواف لتوسيع الجيب الآمن بسرعة وبدون أي تخمين.',
-        '🎓 هدف المرحلة 4: قاعدة (1 - 2 - 1) الذهبية: عندما يصطف 1-2-1 على حافة، يختبئ اللغمان دائماً تحت الرقمين (1) على الطرفين، ويكون المربع الأوسط تحت الـ (2) آمناً دائماً!',
-        '🎓 هدف المرحلة 5 (التخرج): قاعدة (1 - 2 - 2 - 1) الذهبية: عندما يصطف 1-2-2-1 على حافة، يختبئ اللغمان دائماً تحت الرقمين (2) في المنتصف، ويكون الطرفان تحت الـ (1) آمنين!'
+        '💡 الرقم (1) في الزاوية يلمس مربعاً واحداً = لغم أكيد 🚩.',
+        '💡 المس الرقم المكتمل بالأعلام ليفتح جيرانه الآمنين فوراً ⚡.',
+        '💡 قارن بين رقمين متجاورين لكشف المربعات الآمنة المحيطة.',
+        '💡 في نمط (1-2-1): اللغمان يقعان تحت الرقمين (1) على الطرفين.',
+        '💡 في نمط (1-2-2-1): اللغمان يقعان تحت الرقمين (2) في المنتصف.'
       ];
       const tutLessonsEn = [
-        '🎓 Level 1 Goal: When a "1" touches only ONE hidden corner tile, that tile is 100% a Mine! And once a "1" touches 1 flag, all its other neighbors are 100% Safe!',
-        '🎓 Level 2 Goal: Once a number touches all its required flags (e.g., a "2" touching 2 flags), tap directly on the number to Chord and open all safe neighbors at once!',
-        '🎓 Level 3 Goal: Combine corner flags with single-tap Chording to rapidly expand your safe zone.',
-        '🎓 Level 4 Goal: The Golden 1-2-1 Rule: Whenever 1-2-1 lines up along a wall, the two mines ALWAYS sit beneath the two outer "1"s, and the middle tile under "2" is safe!',
-        '🎓 Level 5 Goal (Graduation): The Golden 1-2-2-1 Rule: Whenever 1-2-2-1 lines up along a wall, the two mines ALWAYS sit beneath the two middle "2"s!'
+        '💡 A corner "1" touching one hidden tile = 100% Mine 🚩.',
+        '💡 Tap a satisfied number to open all its safe neighbors ⚡.',
+        '💡 Compare two adjacent numbers to spot safe outer tiles.',
+        '💡 In 1-2-1: Mines sit beneath the two outer "1"s.',
+        '💡 In 1-2-2-1: Mines sit beneath the two middle "2"s.'
       ];
 
       return {
@@ -2522,16 +2518,14 @@
             {
               speaker: actObj.nameAr,
               text: spec.isTutorial
-                ? `مرحلة تدريب منطقي (${levelId} من 5): لن ندلّك على المربع المخفي جاهزاً؛ بل سنحيط لك "الرقم المفتاحي" بحلقة زرقاء ونشرح لك المعادلة المنطقية لتستنتج بنفسك أين تضع العلم أو أين تحفر!`
-                : `المرحلة ${levelId} من 50 (${spec.mines} لغماً): لوحة منطقية خالصة 100% بدون تخمين. طبّق مهارات الزوايا، الكشف السريع، وأنماط 1-2-1 و 1-2-2-1 لتأمين المنطقة!`
+                ? `تدريب عملي سريع (${levelId}/5) — اتبع الرقم المحدد بالأزرق.`
+                : `المرحلة ${levelId} (${spec.mines} لغماً) — تُحل بالمنطق 100% بدون تخمين.`
             }
           ],
           lesson: spec.isTutorial
             ? tutLessonsAr[levelId - 1]
-            : `💡 نصيحة تكتيكية للمستوى ${levelId}: ابدأ بنقرة في وسط اللوحة لفتح منطقة آمنة واسعة، ثم استخدم الكشف السريع (Chording) وتذكّر أن زر (💡 تلميح منطقي) متاح دائماً لشرح أي خطوة صعبة!`,
-          epilogue: spec.isTutorial
-            ? `🌟 ممتاز! أتممت مرحلة التأهيل ${levelId} من 5 بنجاح! استعد للمرحلة التالية!`
-            : `🏆 أحسنت! تم اجتياز المستوى ${levelId} من 50 بنجاح بالمنطق الخالص!`
+            : `💡 ابدأ من الوسط، واستخدم الفتح السريع على الأرقام المكتملة.`,
+          epilogue: `🏆 أحسنت! اجتزت المرحلة ${levelId} بنجاح.`
         },
         en: {
           badge: metaEn.badge,
@@ -2540,16 +2534,14 @@
             {
               speaker: actObj.nameEn,
               text: spec.isTutorial
-                ? `Interactive Logic Coaching (${levelId} of 5): Instead of pointing at hidden answers, the Coach highlights the Clue Number(s) in blue and explains the logical equation so YOU deduce which neighbor is safe or a mine!`
-                : `Campaign Stage ${levelId} of 50 (${spec.mines} Mines): A 100% pure-logic No-Guess board. Apply corner deduction, Chording, and wall patterns to clear the sector!`
+                ? `Quick tutorial (${levelId}/5) — follow the blue highlighted number.`
+                : `Stage ${levelId} (${spec.mines} Mines) — 100% solvable by pure logic.`
             }
           ],
           lesson: spec.isTutorial
             ? tutLessonsEn[levelId - 1]
-            : `💡 Tactical Tip for Level ${levelId}: Start near the center to open a wide safe pocket, use Chording on satisfied numbers, and use Smart Logic Hint (💡) anytime you want a step explained!`,
-          epilogue: spec.isTutorial
-            ? `🌟 Awesome job! You completed Onboarding Stage ${levelId} of 5!`
-            : `🏆 Victory! Level ${levelId} of 50 cleared with 100% pure logic!`
+            : `💡 Start near the center and tap satisfied numbers to quick-open.`,
+          epilogue: `🏆 Stage ${levelId} cleared!`
         }
       };
     }
@@ -2568,7 +2560,7 @@
      * 5. APPLICATION STATE & STORAGE
      ********************************************************************/
     const state = {
-      lang: 'en',
+      lang: 'ar',
       theme: 'retro',
       defaultThemeRetroMigrated: true,
       view: 'home',
@@ -4851,9 +4843,26 @@
     function getViewportAvailableDims() {
       const isMobile = window.innerWidth <= 640;
       const rawViewportW = window.innerWidth;
-      const storyOverhead = state.storyChapterId ? (state.storyChapterId <= 5 ? 72 : 58) : 0;
-      const hudOverhead = isMobile ? 88 : 104;
-      const rawViewportH = window.innerHeight - hudOverhead - storyOverhead;
+      let measuredOverhead = 0;
+      const viewGameEl = document.getElementById('viewGame');
+      if (viewGameEl && !viewGameEl.classList.contains('hidden')) {
+        const topHudEl = viewGameEl.firstElementChild;
+        const storyBannerEl = document.getElementById('storyHudBanner');
+        const hintBannerEl = document.getElementById('logicHintBanner');
+        const replayBarEl = document.getElementById('replayControlBar');
+        const bottomBarEl = document.getElementById('gameBottomBar');
+        if (topHudEl) measuredOverhead += topHudEl.offsetHeight;
+        if (storyBannerEl && !storyBannerEl.classList.contains('hidden')) measuredOverhead += storyBannerEl.offsetHeight;
+        if (hintBannerEl && !hintBannerEl.classList.contains('hidden')) measuredOverhead += hintBannerEl.offsetHeight;
+        if (replayBarEl && !replayBarEl.classList.contains('hidden')) measuredOverhead += replayBarEl.offsetHeight;
+        if (bottomBarEl && !bottomBarEl.classList.contains('hidden')) measuredOverhead += bottomBarEl.offsetHeight;
+      }
+      if (measuredOverhead < 60) {
+        const storyOverhead = state.storyChapterId ? (state.storyExplainHidden ? 38 : 96) : 0;
+        const hudOverhead = isMobile ? 92 : 106;
+        measuredOverhead = hudOverhead + storyOverhead;
+      }
+      const rawViewportH = Math.max(160, window.innerHeight - measuredOverhead - 6);
       return { rawViewportW, rawViewportH, isMobile };
     }
 
@@ -5492,8 +5501,7 @@
         wrapEl.style.height = `${scaledH}px`;
       }
       if (vpEl) {
-        const isZoomed = state.zoomScale > 1.01;
-        vpEl.style.overflow = isZoomed ? 'auto' : 'hidden';
+        vpEl.style.overflow = 'auto';
       }
 
       // Because every .ms-cell uses a 128x128 Retina texture and .board-grid has NO permanent will-change:transform,
@@ -6681,6 +6689,19 @@
       setTxt('txtCloudEndpointHeader', '🌐 المزامنة السحابية التلقائية (Firebase / Supabase مجاني)', '🌐 Auto Cloud Sync (Firebase / Supabase Free Tier)');
       setTxt('txtCloudEndpointDesc', 'اختياري: ضع رابط قاعدة Firebase المجانية ليتم رفع ومزامنة تقدمك تلقائياً في الخلفية فور اتصال الإنترنت.', 'Optional: Enter a free Firebase Realtime DB URL to auto-sync your progress in the background whenever internet is available.');
       setTxt('txtBtnSyncNow', 'حفظ ومزامنة السحابة الآن', 'Save & Sync Cloud Now');
+      setTxt('txtAppVersionTitle', 'إصدار التطبيق: v1.0.0 (Build 100)', 'App Version: v1.0.0 (Build 100)');
+      setTxt('txtAppVersionSub', 'يدعم التحديث المباشر للـ APK فوق النسخة الحالية بدون حذف بياناتك', 'Supports direct in-place APK updates without losing saved data');
+      setTxt('supportThankYouBanner', '🎉 شكراً لدعمك! تم تفعيل تاج VIP وإضافة التلميحات الإضافية!', '🎉 Thank you for supporting Minesweeper Odyssey! VIP Crown & Bonus Hints Activated!');
+      const inpSaveCode = document.getElementById('inpImportSaveCode');
+      if (inpSaveCode) inpSaveCode.placeholder = isAr ? 'الصق كود الحفظ هنا (MSODY2:...)' : 'Paste Save Code (MSODY2:...) here';
+      const btnBackStory = document.getElementById('btnBackFromStory');
+      if (btnBackStory) {
+        btnBackStory.innerHTML = `${isAr ? '→' : '←'} <span id="txtStoryBack">${dict.menuBtn}</span>`;
+      }
+      const btnGameBackEl = document.getElementById('btnGameBack');
+      if (btnGameBackEl) {
+        btnGameBackEl.innerHTML = `<span>${isAr ? '→' : '←'}</span> <span id="txtGameMenuBtn">${dict.menuBtn}</span>`;
+      }
 
       updateDailyChallengeBadgeUI();
       updateResumeMatchButtonUI();
@@ -7067,8 +7088,22 @@
       const btnShowTarget = document.getElementById('btnToggleTutorialTarget');
       const txtShowTarget = document.getElementById('txtToggleTutTargetBtn');
       const txtOpenGuide = document.getElementById('txtOpenLogicGuideBtn');
+      const explainBody = document.getElementById('storyExplainCollapsibleBody');
+      const txtToggleExplain = document.getElementById('txtToggleStoryExplainBtn');
+      const iconToggleExplain = document.getElementById('iconToggleStoryExplain');
 
       if (txtOpenGuide) txtOpenGuide.textContent = isAr ? 'القواعد' : 'Rules';
+      if (explainBody) {
+        explainBody.classList.toggle('hidden', !!state.storyExplainHidden);
+      }
+      if (txtToggleExplain) {
+        txtToggleExplain.textContent = state.storyExplainHidden
+          ? (isAr ? 'إظهار الشرح' : 'Show Guide')
+          : (isAr ? 'إخفاء الشرح' : 'Hide Guide');
+      }
+      if (iconToggleExplain) {
+        iconToggleExplain.textContent = state.storyExplainHidden ? '🔽' : '🔼';
+      }
 
       if (ch.isTutorial) {
         const ded = analyzeLiveTutorialDeduction();
@@ -7315,7 +7350,8 @@
       const langData = state.lang === 'ar' ? cut.ar : cut.en;
       const dims = getAdaptiveDimensions(ch.shortSide || ch.cols, ch.longSide || ch.rows);
 
-      document.getElementById('cutsceneArtContainer').innerHTML = cut.artSvg;
+      const actTitleLocalized = state.lang === 'ar' ? (ch ? (WORLD_ACTS.find(a => a.act === ch.act) || WORLD_ACTS[0]).nameAr : '') : (ch ? (WORLD_ACTS.find(a => a.act === ch.act) || WORLD_ACTS[0]).nameEn : '');
+      document.getElementById('cutsceneArtContainer').innerHTML = cut.artSvg.replace(/<text[^>]*>.*?<\/text>/, `<text x="300" y="180" fill="#fef08a" font-size="14" font-weight="bold" text-anchor="middle">${actTitleLocalized}</text>`);
       document.getElementById('cutsceneBadge').textContent = langData.badge;
       document.getElementById('cutsceneDimsBadge').textContent = `${dims.cols}×${dims.rows} • ${ch.mines} 💣`;
       document.getElementById('cutsceneTitle').textContent = langData.title;
@@ -7354,7 +7390,7 @@
       }
       document.getElementById('resultSubtitle').textContent = subText;
       document.getElementById('resultTimeVal').textContent = `${state.timerSeconds}s`;
-      document.getElementById('resultLogicVal').textContent = state.noGuessEnabled ? '100% No-Guess' : 'Classic';
+      document.getElementById('resultLogicVal').textContent = state.noGuessEnabled ? (state.lang === 'ar' ? '100% بدون تخمين' : '100% No-Guess') : (state.lang === 'ar' ? 'كلاسيكي' : 'Classic');
 
       const nextStoryBtn = document.getElementById('btnResultNextStory');
       if (won && state.storyChapterId && state.storyChapterId < STORY_CHAPTERS.length) {
@@ -8470,6 +8506,16 @@
           state.tutorialShowTarget = !state.tutorialShowTarget;
           updateStoryTutorialBanner();
           renderBoardGrid();
+        });
+      }
+      const btnToggleExplain = document.getElementById('btnToggleStoryExplain');
+      if (btnToggleExplain) {
+        btnToggleExplain.addEventListener('click', () => {
+          playSound('dig');
+          state.storyExplainHidden = !state.storyExplainHidden;
+          updateStoryTutorialBanner();
+          renderBoardGrid();
+          centerBoardInViewport(0.5, 0.5);
         });
       }
       const btnCont = document.getElementById('btnContinueCampaign');

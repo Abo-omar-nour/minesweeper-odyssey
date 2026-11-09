@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
@@ -192,7 +192,7 @@
 
       <!-- ==================== VIEW 2: 50-LEVEL CAMPAIGN & 5-STAGE ACADEMY MAP ==================== -->
       <section id="viewStory" class="hidden flex-1 overflow-y-auto px-4 py-4 sm:px-6 flex-col items-center">
-        <div class="w-full max-w-md md:max-w-4xl flex flex-col gap-4 pb-6 animate-pop">
+        <div class="w-full max-w-md md:max-w-4xl mx-auto shrink-0 flex flex-col gap-3 pb-8 animate-pop">
           <div class="flex items-center justify-between gap-3">
             <div>
               <h2 id="txtStoryMapTitle" class="text-xl sm:text-2xl font-black leading-tight">50-Level Logic Campaign & Academy</h2>
@@ -218,7 +218,7 @@
           </div>
 
           <!-- Tier / World Filter Tabs -->
-          <div id="storyFilterTabs" class="flex items-center gap-1.5 overflow-x-auto pb-1">
+          <div id="storyFilterTabs" class="w-full shrink-0 flex items-center gap-1.5 overflow-x-auto py-1" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
           </div>
 
           <div id="storyChaptersList" class="flex flex-col md:grid md:grid-cols-2 gap-3">
@@ -265,34 +265,38 @@
           </div>
         </div>
 
-        <!-- Story / Interactive Logic Coach Banner -->
-        <div id="storyHudBanner" class="hidden px-3.5 py-2.5 themed-card border-x-0 border-t-0 rounded-none shrink-0">
-          <div class="max-w-lg mx-auto flex flex-col gap-2">
-            <div class="flex items-start justify-between gap-2.5">
-              <div class="flex items-start gap-2.5 min-w-0 flex-1">
-                <span id="storyBannerEmoji" class="text-2xl shrink-0 mt-0.5">🧠</span>
-                <div class="min-w-0 flex-1">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span id="storyBannerTitle" class="text-xs sm:text-sm font-extrabold tracking-wide" style="color: var(--accent-primary);">المدرب المنطقي التفاعلي</span>
-                    <span id="storyLogicFormulaChip" class="hidden text-[11px] font-mono font-extrabold px-2 py-0.5 rounded-lg themed-input"></span>
-                  </div>
-                  <p id="storyBannerText" class="text-xs sm:text-sm font-semibold mt-1 leading-relaxed"></p>
-                </div>
+        <!-- Story / Interactive Logic Coach Banner (Collapsible by User at Will) -->
+        <div id="storyHudBanner" class="hidden px-3 py-1.5 themed-card border-x-0 border-t-0 rounded-none shrink-0">
+          <div class="max-w-lg mx-auto flex flex-col gap-1.5">
+            <!-- Compact Header Row: Title + Formula + Action Pills + Show/Hide Explanation Button -->
+            <div class="flex items-center justify-between gap-1.5 flex-wrap">
+              <div class="flex items-center gap-1.5 min-w-0 flex-1">
+                <span id="storyBannerEmoji" class="text-lg shrink-0">🧠</span>
+                <span id="storyBannerTitle" class="text-xs font-extrabold truncate" style="color: var(--accent-primary);">المدرب المنطقي التفاعلي</span>
+                <span id="storyLogicFormulaChip" class="hidden text-[10px] font-mono font-extrabold px-1.5 py-0.5 rounded-md themed-input shrink-0"></span>
               </div>
-              <div class="flex flex-col sm:flex-row items-center gap-1.5 shrink-0 self-center">
-                <button id="btnToggleTutorialTarget" class="hidden btn-primary px-2.5 py-1.5 rounded-xl text-xs font-extrabold" title="Show deduced tile if stuck">
+              <div class="flex items-center gap-1 shrink-0">
+                <button id="btnToggleTutorialTarget" type="button" class="hidden btn-primary px-2 py-1 rounded-lg text-[11px] font-extrabold" title="Show deduced tile if stuck">
                   👁️ <span id="txtToggleTutTargetBtn">أرني المربع</span>
                 </button>
-                <button id="btnOpenLogicGuide" class="btn-secondary px-2.5 py-1.5 rounded-xl text-xs font-extrabold" title="Visual Logic Rules Guide">
+                <button id="btnOpenLogicGuide" type="button" class="btn-secondary px-2 py-1 rounded-lg text-[11px] font-extrabold" title="Visual Logic Rules Guide">
                   📐 <span id="txtOpenLogicGuideBtn">القواعد</span>
                 </button>
-                <button id="btnReplayStoryCutscene" class="btn-secondary px-2.5 py-1.5 rounded-xl text-xs font-bold" title="Mission Briefing">
+                <button id="btnReplayStoryCutscene" type="button" class="btn-secondary px-2 py-1 rounded-lg text-[11px] font-bold" title="Mission Briefing">
                   📖 <span id="txtReplayStoryBtn">القصة</span>
                 </button>
-                <button id="btnNextTutorialStep" class="hidden btn-primary px-3 py-1.5 rounded-xl text-xs">
+                <button id="btnToggleStoryExplain" type="button" class="themed-elevated px-2 py-1 rounded-lg text-[11px] font-extrabold flex items-center gap-1 border" style="border-color: var(--accent-primary); color: var(--accent-primary);" title="إظهار / إخفاء الشرح">
+                  <span id="iconToggleStoryExplain">🔼</span>
+                  <span id="txtToggleStoryExplainBtn">إخفاء الشرح</span>
+                </button>
+                <button id="btnNextTutorialStep" type="button" class="hidden btn-primary px-2.5 py-1 rounded-lg text-[11px]">
                   Next →
                 </button>
               </div>
+            </div>
+            <!-- Collapsible Explanation Text Box -->
+            <div id="storyExplainCollapsibleBody" class="pt-0.5 border-t" style="border-color: rgba(128,128,128,0.2);">
+              <p id="storyBannerText" class="text-xs font-semibold leading-snug m-0"></p>
             </div>
           </div>
         </div>
@@ -508,7 +512,7 @@
 
         <div id="liveThemeShowcaseBar" class="themed-input rounded-xl p-3 flex items-center justify-between gap-2.5 text-xs"></div>
 
-        <div class="grid grid-cols-3 gap-2" id="homeThemeSwatches"></div>
+        <div class="hidden" id="homeThemeSwatches"></div>
 
         <div id="studioThemesDetailedList" class="flex flex-col gap-2 pt-1"></div>
       </div>
@@ -632,6 +636,18 @@
         <div class="flex flex-col gap-2 pt-2 border-t" style="border-color: var(--border-color);">
           <label class="text-xs font-extrabold tracking-wide setting-text-col" style="color: var(--accent-primary);" id="txtSettingThemeLabel">🎨 Pro Graphics World (3D Tiles, Sprites & Scenery)</label>
           <div id="settingsThemeList" class="flex flex-col gap-2 w-full"></div>
+        </div>
+
+        <!-- 4. App Version & Direct In-Place APK Update Status -->
+        <div class="themed-card p-3 rounded-xl flex items-center justify-between gap-2 text-xs" style="border-color: var(--border-color);">
+          <div class="min-w-0 flex-1">
+            <div class="font-extrabold flex items-center gap-1.5">
+              <span>📱</span>
+              <span id="txtAppVersionTitle">إصدار التطبيق: v1.0.0 (Build 100)</span>
+            </div>
+            <div id="txtAppVersionSub" class="text-[11px] mt-0.5" style="color: var(--text-secondary);">يدعم التحديث المباشر فوق النسخة الحالية مع حفظ التقدم تلقائياً</div>
+          </div>
+          <span class="px-2 py-1 rounded-lg font-mono font-extrabold text-[10px] themed-input shrink-0">v1.0.0 ✓</span>
         </div>
 
         <button id="btnSaveSettings" class="btn-primary w-full py-3 rounded-xl text-xs sm:text-sm shrink-0">
@@ -791,7 +807,7 @@
 
     <!-- ==================== MODAL 5: VICTORY / GAME OVER OVERLAY ==================== -->
     <div id="modalGameResult" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/65 ">
-      <div class="themed-surface w-full max-w-sm rounded-2xl p-5 text-center flex flex-col items-center gap-3.5 animate-pop">
+      <div class="themed-surface modal-dialog-box w-full max-w-sm rounded-2xl p-4 sm:p-5 text-center flex flex-col items-center gap-3 animate-pop">
         <div id="resultEmoji" class="text-5xl">🏆</div>
         <h3 id="resultTitle" class="text-xl font-extrabold">Victory!</h3>
         <p id="resultSubtitle" class="text-xs sm:text-sm" style="color: var(--text-secondary);">Board cleared with pure logical deduction.</p>
@@ -832,14 +848,14 @@
     </div>
 
     <!-- ==================== MODAL 6: ILLUSTRATED STORY CUTSCENE ==================== -->
-    <div id="modalStoryCutscene" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 ">
-      <div class="themed-surface w-full max-w-lg rounded-3xl overflow-hidden flex flex-col max-h-[92vh] animate-pop border-2" style="border-color: var(--accent-primary);">
+    <div id="modalStoryCutscene" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-4 bg-black/75 ">
+      <div class="themed-surface modal-dialog-box w-full max-w-lg rounded-3xl overflow-y-auto flex flex-col max-h-[90vh] animate-pop border-2" style="border-color: var(--accent-primary);">
         <!-- Illustrated Scene Artwork Header -->
-        <div id="cutsceneArtContainer" class="w-full h-44 sm:h-52 relative overflow-hidden shrink-0 border-b" style="border-color: var(--border-color); background: #071018;">
+        <div id="cutsceneArtContainer" class="w-full h-32 sm:h-40 relative overflow-hidden shrink-0 border-b" style="border-color: var(--border-color); background: #071018;">
         </div>
 
         <!-- Story Chapter Badge & Title -->
-        <div class="p-4 sm:p-5 overflow-y-auto flex flex-col gap-3">
+        <div class="p-3.5 sm:p-5 shrink-0 flex flex-col gap-2.5">
           <div class="flex items-center justify-between gap-2">
             <span id="cutsceneBadge" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full" style="background: var(--accent-primary); color: var(--accent-Contrast);">الفصل 1</span>
             <span id="cutsceneDimsBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded themed-input">8×6 • 5 💣</span>

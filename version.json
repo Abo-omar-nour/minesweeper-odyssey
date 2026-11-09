@@ -1,0 +1,8 @@
+{
+  "appName": "Minesweeper Odyssey",
+  "packageId": "com.minesweeper.odyssey",
+  "versionName": "1.0.1",
+  "versionCode": 101,
+  "releaseNotesAr": "الإصدار الأول المعتمد (v1.0.0): محرك بدون تخمين 100% (V4) + مسجل الألعاب والإعادة + 6 عوالم ثلاثية الأبعاد.",
+  "releaseNotesEn": "Official v1.0.0 Release: 100% Pure-Local No-Guess V4 Engine + Gameplay Recorder & Replay Theater + 6 3D Worlds."
+}
