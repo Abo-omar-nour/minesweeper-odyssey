@@ -398,6 +398,118 @@
       overscroll-behavior: contain;
       min-height: 0;
     }
+
+    /* ==================== ODYSSEY 50-LEVEL WINDING S-CURVE ROADMAP (MATCHING SHOWCASE UI) ==================== */
+    #viewStory {
+      background: radial-gradient(circle at 50% 25%, #0d283a 0%, #071622 70%, #040d14 100%);
+      padding: 0.5rem 0.5rem 1.5rem 0.5rem !important;
+    }
+    .odyssey-map-frame {
+      position: relative;
+      width: 100%;
+      max-width: 54rem;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(12, 36, 52, 0.96) 0%, rgba(8, 24, 36, 0.98) 100%);
+      border: 2px solid rgba(56, 189, 248, 0.55);
+      border-radius: 1.35rem;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75), 0 0 28px rgba(14, 165, 233, 0.22), inset 0 0 30px rgba(56, 189, 248, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .odyssey-map-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.9rem;
+      background: linear-gradient(180deg, rgba(15, 45, 66, 0.95) 0%, rgba(10, 30, 45, 0.9) 100%);
+      border-bottom: 1.5px solid rgba(56, 189, 248, 0.4);
+      gap: 0.5rem;
+      z-index: 5;
+    }
+    .odyssey-notched-title {
+      position: relative;
+      margin: 0 auto;
+      padding: 0.3rem 1.4rem;
+      background: linear-gradient(180deg, rgba(20, 58, 84, 0.95) 0%, rgba(12, 37, 54, 0.95) 100%);
+      border: 1.5px solid rgba(56, 189, 248, 0.65);
+      border-radius: 0.75rem;
+      color: #e0f2fe;
+      font-weight: 800;
+      font-size: clamp(0.88rem, 2vw, 1.12rem);
+      letter-spacing: 0.02em;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.55);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.25);
+      text-align: center;
+    }
+    .odyssey-close-btn {
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 0.6rem;
+      background: rgba(15, 35, 50, 0.9);
+      border: 1.5px solid rgba(56, 189, 248, 0.5);
+      color: #bae6fd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 0.12s ease, background 0.15s ease;
+      flex-shrink: 0;
+    }
+    .odyssey-close-btn:hover {
+      background: rgba(2, 132, 199, 0.35);
+      transform: scale(1.06);
+    }
+    .odyssey-subbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.45rem 0.85rem;
+      background: rgba(7, 20, 31, 0.82);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+      font-size: 0.78rem;
+      color: #bae6fd;
+    }
+    .odyssey-map-scroll-box {
+      position: relative;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 80% 55%, rgba(168, 85, 247, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 25% 82%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+        linear-gradient(180deg, #091e2c 0%, #0b2434 50%, #081b28 100%);
+    }
+    .odyssey-roadmap-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .map-lvl-node {
+      cursor: pointer;
+      transition: filter 0.15s ease;
+    }
+    .map-lvl-node:hover {
+      filter: brightness(1.22) drop-shadow(0 0 8px rgba(56, 189, 248, 0.75));
+    }
+    @keyframes mapPulseHalo {
+      0%, 100% { r: 24px; opacity: 0.85; }
+      50% { r: 31px; opacity: 0.25; }
+    }
+    .map-current-halo {
+      animation: mapPulseHalo 1.6s infinite ease-in-out;
+    }
+
     .story-level-card {
       padding: 0.7rem 0.85rem !important;
       border-width: 1.5px;
